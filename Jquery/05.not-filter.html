@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+
+<body>
+
+
+    <div>
+        <span>Alex</span>
+        <input type="checkbox" name="alex">
+        <span>Alex</span>
+        <span>Alex</span>
+        <span>Alex</span>
+    </div>
+    <div>
+        <input type="checkbox" name="bill" checked>
+        <span>Bill</span>
+        <span>Bill</span>
+        <span>Bill</span>
+        <span>Bill</span>
+    </div>
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $("input:not(:checked) ~span").css("border","1px solid hotpink");
+        $("input:not() + span").css("background", "pink");
+
+    </script>
+</body>
+
+</html>
