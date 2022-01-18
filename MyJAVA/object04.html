@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+
+const p1 = {
+    name: 'bill',
+    age: 25,
+};
+
+let {name, age} = p1; // 展開設定
+
+let {name: myName, age: myAge} = p1; // 展開設定
+
+console.log({name, age});
+console.log(myName, myAge);
+
+myName = 'wee';
+myAge = 44;
+console.log(myName, myAge);
+console.log(p1);
+
+name = 'rrr';
+age = 22;
+console.log({name, age});
+console.log(p1);
+</script>
+</body>
+
+</html>

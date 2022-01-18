@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-color: #c2eaf4;
+            border: black 1px solid;
+        }
+        .ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #e92b55;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+    </div>
+<script>
+    const rect = document.querySelector('.rect');
+    const balls = [];
+
+    for(let i=0; i<100; i++){
+        const b = document.createElement('div');
+        b.className = 'ball';
+        b.style.left = Math.floor(Math.random()*600) + 'px';
+        b.style.top = Math.floor(Math.random()*600) + 'px';
+        const size = 10 + Math.floor(Math.random()*21) + 'px';
+        b.style.width = b.style.height = size;
+        // b.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+        b.style.backgroundColor = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
+        rect.append(b);
+        balls.push(b);
+    }
+
+
+    function runBalls(){
+        balls.forEach( b => {
+            b.style.top = parseInt(b.style.top) - 2 - Math.floor(Math.random()*4) + 'px';
+            b.style.left = parseInt(b.style.left) - (Math.floor(Math.random()*5)-2) + 'px';
+        });
+ 
+        setTimeout(runBalls, 30);
+    }
+    runBalls();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css"> -->
+</head>
+<style>
+   
+    .bttn {
+        width: 100%;
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .btn {
+        width: 50px;
+        height: 20px;
+        border: 1px solid azure;
+        text-align: center;
+        border-radius: 15%;
+    }
+
+    .filter {
+        margin: 100px auto;
+        width: 600px;
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: inset 5px 5px 20px rgba(129, 129, 129, 0.486), 5px 5px 20px rgb(172, 172, 172);
+        border-radius: 5%;
+    }
+
+    .wrap {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        transform: translate(0, 0);
+        transition: 0.5s;
+        transition-timing-function: ease-in-out;
+        z-index: -1;
+    }
+
+    .box {
+        width: 600px;
+        height: 600px;
+
+    }
+
+    .b1 {
+        background-color: rgb(123, 187, 166);
+    }
+
+    .b2 {
+        background-color: rgb(192, 202, 133);
+    }
+
+    .b3 {
+        background-color: rgb(129, 147, 187);
+    }
+
+    .b4 {
+        background-color: rgb(190, 146, 134);
+    }
+</style>
+
+<body>
+
+
+
+    <div class="filter">
+
+        <div class="wrap">
+            <div class="box b1"></div>
+            <div class="box b2"></div>
+            <div class="box b3"></div>
+            <div class="box b4"></div>
+        </div>
+
+        <div class="bttn">
+            <!-- <a class="arrow"></a> -->
+            <a class="btn btn1"></a>
+            <a class="btn btn2"></a>
+            <a class="btn btn3"></a>
+            <a class="btn btn4"></a>
+            <!-- <a class="arrow"></a> -->
+        </div>
+    </div>
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        //<<<<<自己的寫法>>>>
+
+        // $(".bttn .btn1").hover(function() {
+        //     $(this).css("background", "#fff").parent().prev().css('transform','translate(0px, 0)')
+        // },function(){
+        //     $(this).css("background", "none").parent().prev().css('transform','translate(0px, 0)');
+        // })
+
+        // $(".bttn .btn2").hover(function() {
+        //     $(this).css("background", "#fff").parent().prev().css('transform','translate(-600px, 0)')
+        // },function(){
+        //     $(this).css("background", "none").parent().prev().css('transform','translate(-600px, 0)');
+        // })
+
+        // $(".bttn .btn3").hover(function() {
+        //     $(this).css("background", "#fff").parent().prev().css('transform','translate(-1200px, 0)')
+        // },function(){
+        //     $(this).css("background", "none").parent().prev().css('transform','translate(-1200px, 0)');
+        // })
+
+        // $(".bttn .btn4").hover(function() {
+        //     $(this).css("background", "#fff").parent().prev().css('transform','translate(-1800px, 0)')
+        // },function(){
+        //     $(this).css("background", "none").parent().prev().css('transform','translate(-1800px, 0)');
+        // })
+
+        //<<<<<------------->>>>>
+
+        //方法二 if loop
+        //運用到 .siblings()  與  .index()
+
+        // $('.btn').hover(function () {
+        //     $(this).css("background", "#fff").siblings().css("background", "none");
+        //     console.log('classname = btn -',$(this).index());
+            
+        //     if($(this).index()===0){
+        //         $('.wrap').css('transform','translate(0px, 0)')
+        //     }
+        //     if($(this).index()===1){
+        //         $('.wrap').css('transform','translate(-600px, 0)')
+        //     }
+        //     if($(this).index()===2){
+        //         $('.wrap').css('transform','translate(-1200px, 0)')
+        //     }
+        //     if($(this).index()===3){
+        //         $('.wrap').css('transform','translate(-1800px, 0)')
+        //     }
+        // })
+
+        // <<--------------------------------->>    
+        
+
+        //方法三 帶入變數 aa
+        $('.btn').hover(function () {
+            $(this).css("background", "#fff").siblings().css("background", "none");
+                let aa=$(this).index()*-600;
+                $('.wrap').css('transform',`translate(${aa}px,0)`)
+                })
+        
+    </script>
+</body>
+
+</html>

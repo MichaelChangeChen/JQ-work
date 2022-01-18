@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: #75cce2;
+            border: black 1px solid;
+        }
+        .big-ball {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+
+            background-color: #e2ba75;
+            border: black 1px solid;
+            left: 50px;
+            top: 100px;
+        }
+        .ball {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+
+            background-color: #9675e2;
+            border: black 1px solid;
+            left: 40px;
+            top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+        <div class="big-ball">
+            <div class="ball"></div>
+        </div>
+    </div>
+<div id="info"></div>
+
+    <script>
+        const r1= document.querySelector('.rect');
+        const big = document.querySelector('.big-ball');
+        const ball = document.querySelector('.ball');
+
+        const handler = (abc) => {
+            console.log(abc);
+            document.querySelector('#info').innerHTML = `client: ${event.clientX}, ${event.clientY} <br>
+            offset: ${event.offsetX}, ${event.offsetY} <br>
+            page: ${event.pageX}, ${event.pageY} <br>
+            `;
+
+        };
+
+        window.addEventListener('mousemove', handler);
+
+
+    </script>
+</body>
+
+</html>

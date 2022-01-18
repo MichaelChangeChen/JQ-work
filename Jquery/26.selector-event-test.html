@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label>CITY</label>
+                <select name="city" id="city">
+                    <option value="0">基隆市</option>
+                    <option value="1">新北市</option>
+                    <option value="2">台北市</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>DISTRICT</label>
+                <select name="dis" id="dis">
+                    <option value="0"></option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+
+                </select>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        //拿文字 .text()  如同js的  innerTEXT
+        //拿value  .val()  如同js的  Value
+        //拿html  .hmtl() 如同js的  innerHTML
+
+        let districtArray = [
+            ['七堵區', '中正區', '暖暖區'],
+            ['板橋區', '新莊區', '三重區'],
+            ['大安區', '信義區', '中山區']
+        ];
+        
+        //先顯示要唄.change 的內容: (確定each的用法)
+        // $('#city option').each(function(index,value){
+        //         console.log('index',index);
+        //         console.log('-----');
+        //         console.log('value',value);
+        //     })
+
+//方法一
+        // $('#city').change(function () {
+        //     $('#dis option').each(function(index,value){
+        //         $(value).text(districtArray[$("#city").val()][index]);
+        //     })
+        // })
+
+        // $('.btn').click(function () {
+        //     console.log('click')
+        // })
+
+
+// 作法二
+
+        $('#city').change(function () {
+            for (let i = 0; i < $("#dis option").length; i++) {
+                let area = districtArray[$("#city").val()]
+                console.log(i)
+                console.log(area[0])
+                console.log(area[1])
+                console.log(area[2])
+                $('#dis option').eq(i).text(area[i]);
+            }
+        })
+
+    </script>
+</body>
+
+</html>

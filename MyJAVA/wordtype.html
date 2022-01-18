@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="apple"><p>5464</p></div>
+<!-- P內容被JAVA id=apple覆蓋了 -->
+
+<script>
+    document.write('<h1>HELLO</h1>')
+    document.write('<p>HELLO</p>')
+    document.write('<ul><li>HELLO</li></ul>')
+
+    document.getElementById('apple').innerHTML ='<h1>HELLO KITTY</h1>'
+
+    alert('糾兜媽ㄉㄟˇ')
+    // 顯示目前狀態(只有確定鍵) 
+    // 會停止所有旺業運作,直到顯示是裝備關閉
+
+    confirm('Wanna Reload?')
+    // 與alert相同
+    // 顯示目前狀態(但多出 確定鍵 與 取消鍵) 
+    // 會停止所有旺業運作,直到顯示是裝備關閉
+
+    
+
+
+    // 變數的宣告方式分為 var let const
+    
+    var a=50;
+    console.log(a);
+
+    // var: 在宣告後的變數 會覆蓋掉全域(包括Windows內的指令在內)
+    // let: 
+    // const: 
+    
+</script>
+
+</body>
+</html>
+

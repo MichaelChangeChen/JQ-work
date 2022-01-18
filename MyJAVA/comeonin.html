@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="myInput"><br>
+    <button onclick="thePut()">enter</button>
+    <div id="outPut"></div>
+    <div id="ddd"></div>
+
+
+
+    <script>
+        const myInput = document.querySelector('#myInput')
+        const outPut = document.querySelector('#outPut')
+        function thePut() {
+            outPut.innerHTML = +myInput.value
+
+            if (isNaN(myInput.value))
+                ddd.innerHTML = '<h1>NUMBER please ~</h1>'
+            else if (myInput.value >= 18)
+                ddd.innerHTML = '<h1>Welcome... Get in there!</h1>'
+            else
+                ddd.innerHTML = '<h1>m....Get out!</h1>'
+
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

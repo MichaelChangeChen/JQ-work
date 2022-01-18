@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .container {
+        margin: 200px 0;
+        display: grid;
+        place-items: center;
+
+    }
+
+    input {
+        accent-color: hotpink;
+       
+    }
+    tr {
+        text-decoration: underline wavy white;
+        transition: 0.5s;
+        transition-timing-function: ease-in-out;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <td> <input type="checkbox"> </td>
+                    <td>Michael</td>
+                    <td>0924093763</td>
+                    <td>Mikey</td>
+                </tr>
+                <tr>
+                    <td> <input type="checkbox"> </td>
+                    <td>Amanda</td>
+                    <td>0900999888</td>
+                    <td>Avanda</td>
+                </tr>
+                <tr>
+                    <td> <input type="checkbox"> </td>
+                    <td>Alber</td>
+                    <td>0900553288</td>
+                    <td>Jackson</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" >
+                    </td>
+                    <td>Tina</td>
+                    <td>0922553188</td>
+                    <td>Kick&Take</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" >
+                    </td>
+                    <td>ZiTing</td>
+                    <td>0922112188</td>
+                    <td>TingTing</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" >
+                    </td>
+                    <td>ShowGo</td>
+                    <td>0922553188</td>
+                    <td>GoGoRo</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" >
+                    </td>
+                    <td>Sam</td>
+                    <td>0922122188</td>
+                    <td>WeAreTheSame</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--  -->
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        // $('input').click(function () {
+        //     $(this).closest('tr').css('background', 'pink').css('text-decoration', 'underline wavy hotpink')
+        //     $(this).prop("checked").closest('tr').css('background', 'white').css('text-decoration', 'underline wavy black')
+        // });
+
+
+        $("input").click(function () {
+            if ($(this).prop('checked')) {
+               $(this).closest('tr').css('background', 'pink').css('text-decoration', 'underline wavy hotpink')
+            } else {
+                $(this).closest('tr').css('background', 'white').css('text-decoration', 'underline wavy white')
+            }
+        });
+
+        // if($("input[checked='']")==null){
+        //     $('input').click(function(){
+        //     $(this).closest('tr').css('background','black').css('text-decoration','none')
+        // });
+        // }else{
+        //     $('input:not(:checked)').click(function(){
+        //     console.log('ok')
+        //     $(this).closest('tr').css('background','pink').css('text-decoration','underline wavy hotpink')
+        // });
+        // }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+
+    /* form{
+        width: auto;
+    } */
+    fieldset{
+        width: 500px  ;
+        margin: 0 auto;
+        border: 3px solid rgb(247, 188, 99);
+        border-radius: 8px;
+    }
+    legend{
+        border: 1px solid rgb(247, 188, 99);
+        border-radius: 4px;
+        padding: 3px 5px;
+    }
+    .qq{
+        width: auto;
+        margin: 20px 15px;
+        border-bottom: 2px solid rgb(196, 196, 196);
+        padding-bottom: 3px;
+    }
+    .title{
+        
+        float: left;
+        text-align: right;
+        padding-right: 5px;
+    }
+</style>
+
+
+
+
+
+</head>
+<body>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>個人資料一<em>(必填)</em></legend>
+            <div class="st">
+                <label class="title">姓名:</label>
+            <input type="text" name="account" value="guest" size="10">
+            </div>
+            <div class="st">
+                <label class="title">密碼:</label>
+                <input type= " password" name="pwd" size="10">
+            </div>
+            <div class="st">
+                <label class="title">性別:</label>
+                <input type="radio" name="gender" value="male">男
+                <input type="radio" name="gender" value="female">女
+            </div>
+        </fieldset> 
+    </form><br><br><br>
+
+
+    <form>
+        <fieldset>
+            <legend>
+                要填好喔
+            </legend>
+            <div class="qq">
+                <label for="" class="title">NAME:</label>
+                <input type="text" id="name" name="name" size="50" maxlength="25" placeholder="Write Your God Damn Name Montherfucker!!">
+            </div>
+            
+            <div class="qq">
+                <label for="" class="title">Password:</label>
+                <input type="password" name="pwd" size="40" placeholder="give me your fucking password~!" maxlength="10">
+            </div>
+            
+            <div class="qq">
+                <label for="" class="title">M or F:</label>
+                <input type="radio" name="gender" value="male">male 
+                <input type="radio" name="gender" value="female">female 
+            </div>
+
+            <div class="qq">
+                <label for="" class="title">Hobby</label>
+                <input type="checkbox" name="Hobby" value="music">music
+                <input type="checkbox" name="Hobby" value="female">female 
+                <input type="checkbox" name="Hobby" value="music">music
+                <input type="checkbox" name="Hobby" value="female">female 
+                <input type="checkbox" name="Hobby" value="music">music
+                <input type="checkbox" name="Hobby" value="female">female 
+            </div>
+
+            <div class="qq">
+                <label for="" class="title">請問你是有什麼意見:</label>
+                <textarea name="prob" id="prb" cols="50" rows="5" placeholder="我...不敢有意見"></textarea>
+            </div>
+            <div class="qq">
+                <label for="" class="title">請隨便選擇你的幸運數字:</label>
+                <select name="" id="">
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                     <option value="5">5</option>
+                     <option value="6">6</option>
+                     <option value="7">7</option>
+                     <option value="8">8</option>
+                     <option value="9">9</option>
+                     <option value="10">10</option>
+                </select>
+            </div>
+        </fieldset>
+        <input type="reset" name="" id="">
+        <input type="submit">
+    </form>
+
+</body>
+</html>

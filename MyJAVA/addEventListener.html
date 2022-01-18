@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body style="text-align: center;">
+    <h1>寫法</h1><br>
+    <h2>範例一:按下按鈕顯示訊息</h2><br>
+    <input type="button" value='訊息1' onclick="qqq()">
+    <input type="button" value='訊息2' id="btn2">
+    <input type="button" value='訊息3'id="btn3">
+    <input type="button" value='訊息4' id="btn4">
+    <input type="button" value='訊息5'>
+    <br>
+    <p id="www"></p>
+<br>
+    <script>
+//利用onclick裡面的呼叫器qqq()呼叫function
+        function qqq(){
+            document.querySelector('#www').innerHTML="第一種方法";
+
+        }
+//利用監聽事件處理器addEventListener針對btn2的click事件呼叫function
+
+document.querySelector('#btn2').addEventListener('click', function(){
+    document.querySelector('#www').innerHTML="第2  種方法";
+}
+)
+
+//function簡寫
+document.querySelector('#btn3').addEventListener('click', ()=>{
+    document.querySelector('#www').innerHTML="第3  種方法";
+}
+)
+
+//onclick針對動作click的簡寫  onclick為屬性缺點為無法重複使用(會被覆蓋)
+document.querySelector('#btn4').onclick =() =>{
+    document.querySelector('#www').innerHTML="第4  種方法";
+}
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

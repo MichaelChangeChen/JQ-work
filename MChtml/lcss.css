@@ -1,0 +1,12 @@
+
+div{height: 1000px;}
+h1, h2{color: rgb(128, 130, 247);}
+ul{color: rgb(247, 238, 120);
+background-color: rgb(221, 221, 221);
+width: 50px;}
+
+.no1{
+    color: slateblue;
+}
+#no2{color: tomato;}
+

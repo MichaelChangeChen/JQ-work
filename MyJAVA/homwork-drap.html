@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .rect {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-color: #000000;
+            border: black 1px solid;
+            filter: blur(1px);
+         
+        }
+        .ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ffffff;
+         
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+    </div>
+<script>
+    const rect = document.querySelector('.rect');
+    const balls = [];
+    function createRandomBall(x, y) {
+        const b = document.createElement('div');
+        b.className = 'ball';
+        const size = 1 + Math.floor(Math.random()*4);
+        b.style.transform= `rotate(${Math.floor(Math.random()*400)}deg)`
+        b.style.width = b.style.height = size  + 'px';
+        b.style.left = x - size/2 + 'px';
+        b.style.top = y -size/2 + 'px';
+        b.style.boxShadow = `1px 1px ${Math.floor(Math.random()*10)}px #fff`
+
+
+        return b;
+    }
+
+    rect.addEventListener('click', function(event){
+        const b = createRandomBall(event.pageX, event.pageY);
+        rect.append(b);
+        balls.push(b)
+    });
+    
+    function runBalls(){
+        balls.forEach( b => {
+            // b.style.top = parseInt(b.style.top) - 1 + Math.floor(Math.random()*3) + 'px';
+            // b.style.left = parseInt(b.style.left) - (Math.floor(Math.random()*5)-2) + 'px';
+            b.style.transform= parseInt(b.style.transform) - Math.floor(Math.random()*400);
+        });
+
+        setTimeout(runBalls, 30);
+    }
+    runBalls();
+</script>
+</body>
+
+</html>

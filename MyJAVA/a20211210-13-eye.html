@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .face {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: #55ccea;
+            border: black 1px solid;
+            border-radius: 50%;
+        }
+        .eye {
+            position: absolute;
+            left:600px;
+            top: 600px;
+            
+        }
+        .eye-white {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #fabfbf;
+           
+            left: -30px;
+            top: -30px;
+        }
+        .eye-black {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #000000;
+            left: -8px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="face">
+        <div class="eye">
+            <div class="eye-white"></div>
+            <div class="eye-black"></div>
+        </div>
+    </div>
+
+
+    <script>
+    const e1 = document.querySelector('.eye');
+
+    window.addEventListener('mousemove', function(event){
+
+        const dx = event.pageX - 600;
+        const dy = event.pageY - 600;
+        e1.style.transform = `rotate(${Math.atan2(dy, dx)/Math.PI*180}deg)`;
+
+
+        //event.pageX
+    });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #75cce2;
+            border: black 1px solid;
+        }
+        .big-ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e2ba75;
+            border: black 1px solid;
+            left: 50px;
+            top: 100px;
+        }
+        .ball {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #9675e2;
+            border: black 1px solid;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+        <div class="big-ball">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <div class="rect" style="left: 400px"></div>
+
+    <script>
+        const [r1, r2] = document.querySelectorAll('.rect');
+        const big = document.querySelector('.big-ball');
+        const ball = document.querySelector('.ball');
+
+        const handler = (event) => {
+            console.log(event.type, event.eventPhase);
+            console.log(event.currentTarget, event.target);
+            console.log(event);
+            console.log('---------------------------');
+        };
+
+        const h2 = (event) => {
+            event.stopPropagation();
+        };
+
+        r1.addEventListener('click', handler, true); // useCapture
+        big.addEventListener('click', handler, true); // useCapture
+        ball.addEventListener('click', handler, true); // useCapture
+        ball.addEventListener('click', handler);
+        big.addEventListener('click', h2);
+        r1.addEventListener('click', handler);
+
+    </script>
+</body>
+
+</html>     

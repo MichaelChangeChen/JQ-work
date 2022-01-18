@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .rect {
+        position: relative;
+        width: 1000px;
+        height: 1000px;
+        background-color: #000000;
+        border: black 1px solid;
+        transform: perspective(100px)
+    }
+
+    .ball {
+        position: absolute;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 5px 5px  10px #ffffff;
+       
+    }
+</style>
+</head>
+
+<body>
+    <div class="rect">
+    </div>
+    <script>
+        const rect = document.querySelector('.rect');
+        const balls = [];
+        for (let i = 0; i < 500; i++) {
+            const b = document.createElement('div');
+            b.className = 'ball';
+            b.style.width = b.style.height = Math.floor(Math.random() * 4) + 'px';
+            b.style.top = Math.floor(Math.random() * 1000) + 'px';
+            b.style.right = Math.floor(Math.random() * 1000) + 'px';
+            b.style.filter = 'blur('+ Math.random() +')';
+            b.style.transform = 'rotate(' + Math.floor(Math.random() *360) + 'deg)';
+            balls.push(b);
+            rect.append(b);
+        }
+        //     // b.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+        //     b.style.backgroundColor = `rgb(00000,${Math.floor(Math.random())})
+        function runBalls() {
+            balls.forEach(b => {
+
+                b.style.filter = 'blur('+1+Math.floor(Math.random() *2)+'px)';
+                b.style.transform = 'rotate(' + Math.floor(Math.random() * 361) + 'deg)';
+            })
+            setTimeout(runBalls, 100)
+        }
+        runBalls();
+// function runBalls(){
+//     balls.forEach( b => {
+//         
+//         b.style.left = parseInt(b.style.left) - (Math.floor(Math.random()*5)-2) + 'px';
+//     });
+
+//     setTimeout(runBalls, 30);
+// }
+// runBalls();
+    </script>
+</body>
+
+</html>

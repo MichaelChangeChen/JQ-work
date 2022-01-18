@@ -1,0 +1,10 @@
+SELECT `category_sid`,COUNT(1) num FROM `products` GROUP BY `category_sid`
+
+SELECT * FROM `orders` o
+    JOIN `order_sid`
+        ON o.sid = d.order_sid
+    JOIN `products` p 
+        ON p.sid = d.product_sid
+WHERE o.sid= 10
+
+

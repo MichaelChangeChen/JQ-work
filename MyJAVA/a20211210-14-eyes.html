@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .face {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: #55ccea;
+            border: black 1px solid;
+            border-radius: 50%;
+        }
+        .eye {
+            position: absolute;
+            left: 200px;
+            top: 300px;
+        }
+        .eye-white {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: black 10px solid;
+            left: -40px;
+            top: -40px;
+        }
+        .eye-black {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #000000;
+            left: 0px;
+            top: -15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="face">
+        <div class="eye" style="left: 200px; top: 300px">
+            <div class="eye-white"></div>
+            <div class="eye-black"></div>
+        </div>
+        <div class="eye" style="left: 400px; top: 300px">
+            <div class="eye-white"></div>
+            <div class="eye-black"></div>
+        </div>
+        <div class="eye" style="left: 300px; top: 200px">
+            <div class="eye-white"></div>
+            <div class="eye-black"></div>
+        </div>
+    </div>
+
+
+    <script>
+    const eyes = document.querySelectorAll('.eye');
+
+    window.addEventListener('mousemove', function(event){
+
+        eyes.forEach( eye => {
+            const dx = event.pageX - parseInt(eye.style.left);
+            const dy = event.pageY - parseInt(eye.style.top);
+            eye.style.transform = `rotate(${Math.atan2(dy, dx)/Math.PI*180}deg)`;
+        });
+
+    });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table style="border:1px solid red">
+        <tr>
+            <td>1</td>
+            <td class="qqq">2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td class="qqq">5</td>
+            <td>6</td>
+        </tr>
+    </table>
+
+
+    <script>
+
+      
+        var td1 = document.querySelector('td')
+        console.log('td1:',td1)
+         
+        var td2 = document.querySelectorAll('td')
+        console.log('td2:',td2)
+
+        var td3 = document.querySelector('.qqq')
+        console.log('td3:',td3)
+        
+        var td4 = document.querySelectorAll('.qqq')
+        console.log('td4:',td4)
+ // =============================================
+
+
+        td3.style.backgroundColor='red'
+
+        
+    </script>
+</body>
+</html>

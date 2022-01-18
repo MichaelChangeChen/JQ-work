@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+
+    .wrap{
+        margin: 100px auto;
+       
+    }
+    .box{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 20px;
+        transition: .5s ease;
+
+    }
+    .box1{
+        background-color:thistle;
+    }
+    .box2{
+        background-color:tomato;
+    }
+    .box3{
+        background-color:pink;
+    }
+    .box4{
+        background-color:khaki;
+    }
+    .box5{
+        background-color:skyblue;
+    }
+</style>
+<body>
+      <div class="container">
+          <div class="wrap row ">
+              <div class="box box1"></div>
+              <div class="box box2"></div>
+              <div class="box box3"></div>
+              <div class="box box4"></div>
+              <div class="box box5"></div>
+          </div>
+      </div>
+
+
+    
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $('.box').click(function(){
+            $(this).siblings().css('outline','0px').css('box-shadow','none')
+            $(this).css('outline','5px solid black').css('box-shadow','10px 10px 10px rgba(0, 0, 0, 0.534)')
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+UPDATE `products` SET `sid`=' ',`author`=' ',`bookname`=' ',`category_sid`=' ',`book_id`=' ',`publish_date`=' ',`pages`=' ',`price`=' ',`isbn`=' ',`on_sale`=' ',`introduction`=' ' WHERE 1
