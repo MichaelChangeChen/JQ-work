@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+        transition: .5s;
+    }
+</style>
+
+<body>
+
+    <div class="box"></div>
+    <button class="btn2">take color</button>
+
+    <div class="box2"></div>
+    <button class="btn1">click</button>
+
+    <button class="btn3">print it</button>
+
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+
+        var style = {
+            width: '200px',
+            height: '200px',
+            'background-color': 'hotpink',
+            transition: '.5s'
+        };
+
+        let coloris;
+
+        // console.log(coloris);
+
+
+        
+        $('.btn2').click(function () {
+            let coloris = $('.box').css('background-color');
+
+        })
+
+
+        //如何存入陣列中
+        $('.btn1').click(function () {
+            $('.box2').css(style)
+        })
+
+
+        $('.btn3').click(function () {
+            $('.box').css('background-color');
+            console.log(coloris)
+        })
+    </script>
+</body>
+
+</html>

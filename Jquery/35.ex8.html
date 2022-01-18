@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .wrap {
+        width: 1000px;
+        height: 600px;
+        background-color: skyblue;
+        position: relative;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: hotpink;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 1.5s;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="box">
+
+        </div>
+    </div>
+
+    <div class="move text-center">
+        <div class="up"><button id="btnUp" class="mx-3">Up</button></div>
+        <div class="down"><button id="btnDown" class="mx-3">Down</button></div>
+        <div class="left"><button id="btnLeft" class="mx-3">Left</button></div>
+        <div class="right"><button id="btnRight" class="mx-3">Right</button></div>
+
+    </div>
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $('#btnRight').click(function () {
+            if (parseInt($('.box').css('left')) >= 900) {
+                alert('oooppppss')
+            }else{
+               $('.box').css('left', '+=100')
+            }
+        })
+
+
+        $('#btnLeft').click(function () {
+            if (parseInt($('.box').css('left')) >= 0) {
+                alert('oooppppss')
+            }else{
+                $('.box').css('left', '-=100')
+            }
+        })
+
+        $('#btnDown').click(function () {
+            if (parseInt($('.box').css('top')) >= 500) {
+                alert('oooppppss')
+            }else{
+                $('.box').css('top', '+=100')
+                console.log($('.box').css('top'));
+            }
+        })
+
+
+        $('#btnUp').click(function () {
+            if (parseInt($('.box').css('top')) <= 0) {
+                $('.box').css('top', '')
+                alert('oooppppss')
+            }else{
+                $('.box').css('top', '-=100')
+                console.log($('.box').css('top'));
+            }
+        })
+
+
+        $(document).on('keydown',function(){
+            console.log('hi',event)
+            if(event.key === 'ArrowUp'){
+                $('.box').css('top', '-=100')
+            }if(event.key === 'ArrowDown'){
+                $('.box').css('top', '+=100')
+            }if(event.key === 'ArrowLeft'){
+                $('.box').css('left', '-=100')
+            }if(event.key === 'ArrowRight'){
+                $('.box').css('left', '+=100')
+            }if(event.key === ' '){
+                $('.box').css('background-color', 'black')
+            }if(event.key === 'Enter'){
+                $('.box').css('background-color', 'hotpink')
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>
