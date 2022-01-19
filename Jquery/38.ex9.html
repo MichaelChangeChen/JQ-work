@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .fontS {
+        font-size: 0.8rem;
+    }
+
+    .fontM {
+        font-size: 1rem;
+    }
+
+    .fontL {
+        font-size: 1.2rem;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="btn-group">
+                <div class="btn btn-info">S</div>
+                <div class="btn btn-info active">M</div>
+                <div class="btn btn-info">L</div>
+            </div>
+        </div>
+        <h2>jQuery</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam velit
+            ipsum corporis rerum eaque repudiandae excepturi, voluptatem, deserunt
+            itaque beatae qui fugit cumque error nesciunt tenetur quis dignissimos
+            minus rem.
+        </p>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam velit
+            ipsum corporis rerum eaque repudiandae excepturi, voluptatem, deserunt
+            itaque beatae qui fugit cumque error nesciunt tenetur quis dignissimos
+            minus rem.
+        </p>
+    </div>
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+
+        //--------------My Anwser-------------
+
+        // $('.btn').eq(0).click(function () {
+        //     $(this).addClass('active').siblings().removeClass('active')
+        //     $('p').addClass('fontS').siblings().removeClass('fontL').siblings().removeClass('fontM')
+        // })
+        // $('.btn').eq(1).click(function () {
+        //     $(this).addClass('active').siblings().removeClass('active')
+        //     $('p').addClass('fontM').siblings().removeClass('fontL')
+        // })
+        // $('.btn').eq(2).click(function () {
+        //     $(this).addClass('active').siblings().removeClass('active')
+        //     $('p').addClass('fontL')
+        // })
+
+
+        //--------------My Anwser-------------
+        //--------------Tring Anwser 2 -------------
+            // console.log($('.btn').length)
+            
+            // for(let i=0; i<=$('.btn').length;i++){
+            //    $('.btn').eq(i).click(function () {  
+            //     $(this).addClass('active').siblings().removeClass('active')
+
+            //     if( $('p').addClass('fontS')){
+            //         $('p').addClass('fontS').siblings().removeClass('fontL').siblings().removeClass('fontM')
+            //     }else{
+            //         $('p').addClass('fontM').siblings().removeClass('fontL')
+            //     }
+            //    })
+            // }
+
+        //--------------Tring Anwser 2 -------------
+
+
+        // ----------------- 解答------------------------------------
+
+            $('.btn').click(function(){
+            // console.log('who?',$(this).is(":contains('S')"));
+            if($(this).is(":contains('S')")){
+                // console.log('who?',$(this).is(":contains('S')"))
+                $('p').removeClass();
+                $('p').addClass('fontS');
+                $('.btn').removeClass('active')
+                $(this).addClass('active')
+
+            }
+            if($(this).is(":contains('M')")){
+                // console.log('who?',$(this).is(":contains('M')"))
+                $('p').removeClass();
+                $('p').addClass('fontM');
+                $('.btn').removeClass('active')
+                $(this).addClass('active')
+            }
+            if($(this).is(":contains('L')")){
+                // console.log('who?',$(this).is(":contains('L')"))
+                $('p').removeClass();
+                $('p').addClass('fontL');
+                $('.btn').removeClass('active')
+                $(this).addClass('active')
+            }
+            })
+           
+
+    </script>
+</body>
+
+</html>
