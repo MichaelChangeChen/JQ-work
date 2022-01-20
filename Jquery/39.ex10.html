@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
 </head>
 <style>
- 
-  .create-color-area{
+  .create-color-area {
     width: 180px;
     height: 180px;
     border-radius: 50%;
     background-color: rgb(0, 0, 0);
     transition: .5s ease-in;
   }
+
   .color-demo-area {
     height: 600px;
     background-color: rgb(24, 24, 24);
@@ -26,7 +26,7 @@
   .color-select-area {
     height: 600px;
     background-color: rgb(24, 24, 24);
-    transition:0.5s ease-in;
+    transition: 0.5s ease-in;
   }
 
   .color-circle {
@@ -63,7 +63,7 @@
       <h3>Like it?</h3>
       <div class="create-color-area"></div>
     </div>
-    
+
   </div>
 
 
@@ -72,25 +72,43 @@
   <script src="/Jquery/jquery-3.6.0.js"></script>
   <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
   <script>
-//   .on('click','.color-circle',function 關鍵              
+      // .on('click','.color-circle',function 關鍵              
     $('.color-select-area').on('click','.color-circle',function () {
       // console.log($(this).css('background-color'))
       let the_color = $(this).css('background-color')
       $('.color-demo-area').css('background-color',the_color)
     })
-    
+
     $('.btnChange').click(function colorCre(){
       // console.log(Math.floor(Math.random()*256))
       $('.create-color-area').css('background',`rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`)
       return $('.create-color-area')
     })
-    
+
 
     $('.btnCreate').click(function(){
       // $('.create-color-area').css('background-color')
       $('.color-select-area').append(`<div class="color-circle"></div>`)
       $('.color-circle').last().css('background-color', $('.create-color-area').css('background-color'))
     })
+
+  //--------------JS-----------------
+
+    // const circle = document.querySelectorAll('.color-circle');
+    // console.log(circle);
+
+
+    // circle.forEach(circleClass => {
+    //   circleClass.addEventListener('click', function () {
+    //     console.log('hi',this);
+    //     //========
+    //     // console.log('hi',this.style.backgroundColor); 抓的是inline style
+    //     // this.style.backgroundColor = 'red';
+    //     //========
+    //     console.log('hi',getComputedStyle(this).backgroundColor)
+    //   })
+    // })
+  //--------------JS-----------------
 
   </script>
 </body>

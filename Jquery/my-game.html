@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    @keyframes people-work1 {
+        0% {
+            transform: rotate(20deg);
+        }
+
+        100% {
+            transform: rotate(-20deg);
+        }
+    }
+
+    @keyframes people-work2 {
+        0% {
+            transform: rotate(-20deg);
+        }
+
+        100% {
+            transform: rotate(20deg);
+        }
+    }
+    @keyframes people-work-head {
+        0% {
+            transform: translate(1px, 0px);
+        }
+
+        100% {
+            transform: translate(-1px, 0px);
+        }
+    }
+
+    .game-box {
+        overflow: hidden;
+        width: 100vw;
+        height: 90vh;
+        background-color: rgb(0, 0, 0);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.521);
+        position: relative;
+    }
+
+    .floor {
+        height: 200px;
+        background-color: rgb(88, 55, 12);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .ufo-position {
+        position: absolute;
+        left: 300px;
+        top: -60px;
+        transition: .4s;
+    }
+
+    .ufo {
+        width: 100px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgb(179, 179, 179);
+        position: absolute;
+        left: -50px;
+        transition: .3s;
+        z-index: 3;
+    }
+
+    .ufo-head {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(194, 194, 194, 0.4);
+        position: absolute;
+        top: -20px;
+        left: 25%;
+        z-index: 3;
+    }
+
+    .ufo-body p {
+        position: absolute;
+        top: 23px;
+        left: 8px;
+        font-size: 12px;
+        color: aliceblue;
+    }
+
+    .ufo-body {
+        width: 50px;
+        height: 25px;
+        border-radius: 50%;
+        background: rgb(172, 172, 172);
+        position: absolute;
+        top: 12px;
+        z-index: 3;
+    }
+
+    .ufo-linght {
+        width: 25px;
+        height: 170px;
+        box-shadow: 0 0 20px rgb(255, 255, 122);
+        background: linear-gradient(to bottom, rgb(255, 255, 122) 30%, rgba(255, 255, 0, 0.336));
+        position: absolute;
+        top: 20px;
+        left: -13px;
+        z-index: 1;
+        transition: .8s;
+    }
+
+    .ufo-circle {
+        width: 22px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 122, 0.342);
+        box-shadow: 10px 0 20px rgba(110, 255, 243, 0.705), -10px 0 20px rgba(110, 255, 243, 0.623);
+        position: absolute;
+        top: 165px;
+        left: 2px;
+        transition: 1s;
+
+    }
+
+    .people-box {
+        position: absolute;
+        left: 200px;
+        bottom: 30px;
+    }
+
+    .people {
+        position: relative;
+        width: 10px;
+        height: 10px;
+    }
+
+    .head {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgb(245, 159, 0);
+        animation: people-work-head ease-in-out .5s infinite alternate-reverse;
+    }
+
+    .body {
+        width: 3px;
+        height: 16px;
+        background: rgb(245, 159, 0);
+        position: absolute;
+        left: 3px;
+        box-shadow: -15px 9px 20px black;
+    }
+
+    .foot1 {
+        width: 2px;
+        height: 15px;
+        background: rgb(245, 159, 0);
+        position: absolute;
+        left: 3px;
+        bottom: -30px;
+        transform-origin: 0 0;
+        animation: people-work2 ease-in-out .5s infinite alternate-reverse;
+    }
+
+    .foot2 {
+        width: 2px;
+        height: 15px;
+        background: rgb(245, 159, 0);
+        position: absolute;
+        left: 3px;
+        bottom: -30px;
+        transform-origin: 0 0;
+        animation: people-work1 ease-in-out .5s infinite alternate-reverse;
+    }
+
+    .hand1 {
+        width: 2px;
+        height: 15px;
+        background: rgb(245, 159, 0);
+        position: absolute;
+        left: 3px;
+        bottom: -16px;
+        transform-origin: 0 0;
+        animation: people-work2 ease-in-out .6s infinite alternate-reverse;
+    }
+
+    .hand2 {
+        width: 2px;
+        height: 15px;
+        background: rgb(245, 159, 0);
+        position: absolute;
+        left: 3px;
+        bottom: -16px;
+        transform-origin: 0 0;
+        animation: people-work1 ease-in-out .6s infinite alternate-reverse;
+
+    }
+</style>
+
+<body>
+    <div class="game-box">
+        <div class="floor">
+
+
+            <div class="ufo-position">
+                <div class="ufo">
+                    <div class="ufo-head">
+                        <div class="ufo-body">
+                            <p>UFO-1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ufo-wep">
+                    <div class="ufo-ci"></div>
+                </div>
+            </div>
+
+            <div class="people-box">
+                <div class="people">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="foot1"></div>
+                    <div class="foot2"></div>
+                    <div class="hand1"></div>
+                    <div class="hand2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $(document).on('keydown', function () {
+            // console.log('hi', event)
+            if (event.key === 'ArrowUp') {
+                $('.ufo-position').css('top', '-=50')
+            } if (event.key === 'ArrowDown') {
+                $('.ufo-position').css('top', '+=50')
+            } if (event.key === 'ArrowLeft') {
+                $('.ufo-position').css('left', '-=50')
+            } if (event.key === 'ArrowRight') {
+                $('.ufo-position').css('left', '+=50')
+            } if (event.key === 'Enter') {
+                $('.ufo').css('background-color', 'rgb(179, 179, 179)')
+                $('.ufo').css('box-shadow', 'none')
+                $('.ufo-wep').removeClass('ufo-linght')
+                $('.ufo-ci').removeClass('ufo-circle')
+            } if (event.key === ' ') {
+                $('.ufo').css('box-shadow', '0 0 30px rgb(0, 255, 242), 0 0 4px rgb(0, 255, 242)inset')
+                $('.ufo-wep').addClass('ufo-linght')
+                $('.ufo-ci').addClass('ufo-circle')
+            }
+        })
+        //create some small-man
+            let positionStyle = 0;
+            let peopleArray = [];
+            
+        for (let i = 0; i < 41; i++) {
+            positionStyle =
+            {  //  game start ... people's position
+                'bottom': `${Math.floor(Math.random() * 200 + 30)}px`,
+                'left': `${Math.floor(Math.random() * 100)}vw`
+
+            }
+            // console.log($('.people-box').css('top'))
+            peopleArray.push($('.people-box').clone().css(positionStyle))
+            // console.log(peopleArray)
+        }
+        // console.log(peopleArray)
+       $('.floor').append(peopleArray)
+// .css('left','')
+
+    </script>
+</body>
+
+</html>
