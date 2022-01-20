@@ -9,7 +9,6 @@
     <!-- <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css"> -->
 </head>
 <style>
-   
     .bttn {
         width: 100%;
         position: absolute;
@@ -68,6 +67,22 @@
     .b4 {
         background-color: rgb(190, 146, 134);
     }
+
+    .arrow-left {
+        background: linear-gradient(to right,rgba(63, 63, 63, 0.473),rgba(255, 255, 255, 0));
+        width: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    .arrow-right {
+        background: linear-gradient(to left,rgba(63, 63, 63, 0.473),rgba(255, 255, 255, 0));
+        width: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
 </style>
 
 <body>
@@ -82,15 +97,14 @@
             <div class="box b3"></div>
             <div class="box b4"></div>
         </div>
-
+        <a class="arrow-left"></a>
         <div class="bttn">
-            <!-- <a class="arrow"></a> -->
             <a class="btn btn1"></a>
             <a class="btn btn2"></a>
             <a class="btn btn3"></a>
             <a class="btn btn4"></a>
-            <!-- <a class="arrow"></a> -->
         </div>
+        <a class="arrow-right"></a>
     </div>
 
 
@@ -131,7 +145,7 @@
         // $('.btn').hover(function () {
         //     $(this).css("background", "#fff").siblings().css("background", "none");
         //     console.log('classname = btn -',$(this).index());
-            
+
         //     if($(this).index()===0){
         //         $('.wrap').css('transform','translate(0px, 0)')
         //     }
@@ -147,15 +161,16 @@
         // })
 
         // <<--------------------------------->>    
-        
+
 
         //方法三 帶入變數 aa
         $('.btn').hover(function () {
             $(this).css("background", "#fff").siblings().css("background", "none");
-                let aa=$(this).index()*-600;
-                $('.wrap').css('transform',`translate(${aa}px,0)`)
-                })
+            let aa = $(this).index() * -600;
+            $('.wrap').css('transform', `translate(${aa}px,0)`)
+        })
         
+
     </script>
 </body>
 
