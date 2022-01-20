@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <button class="pause">pause</button>
+    <button class="stop"> stop</button>
+    <button class="start"> start</button>
+
+
+    
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        let index = 0;
+        let isPause = false;
+        let myInterval = null;
+
+        // setInterval(()=>{
+        //     if(!isPause){
+        //         console.log('index:',index);
+        //         index++;
+        //     }
+        // },1000);
+
+        $('.pause').click(function(){
+            isPause = !isPause;
+        })
+        //沒斷掉  
+        $('.stop').click(function(){
+            console.log('stop')
+            clearInterval(myInterval)
+        })
+        //需改良
+        $('.start').click(function(){
+            console.log('start')
+            myInterval = setInterval(()=>{
+            if(!isPause){
+                console.log('index:',index);
+                index++;
+            }
+        },1000);
+        })
+    </script>
+</body>
+</html>

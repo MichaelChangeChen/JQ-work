@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+      <img class="p1" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/0cc0ce85911227.5d8a24b5aa04d.jpg" alt="">
+      
+      <img class="p2" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/de13b896272773.5eaa819c4519e.jpg" alt="">
+
+
+    
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $('.p1').attr('src')
+        $('.p2').attr('src',$('.p1').attr('src'))
+
+    </script>
+</body>
+</html>

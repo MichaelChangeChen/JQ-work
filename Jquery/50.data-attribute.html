@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<body>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        click
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">123</div>
+
+    <div class="box autobg"></div>
+
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+        }
+
+        function getRBGA() {
+            return `linear-gradient(135deg, rgba(${getRandomInt(
+                256
+            )},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(
+                256
+            )},${getRandomInt(256)},${getRandomInt(256)},.8)`;
+        }
+
+        const elements = document.querySelectorAll(".autobg");
+
+        Array.from(elements).forEach((element, index) => {
+            element.style.backgroundImage = getRBGA();
+        });
+        // $('.autobg').each(function (index, currentElement) {
+        //     currentElement.style.backgroundImage = getRBGA();
+        // });
+
+
+
+        $("button").click(function () {
+            console.log("data-target:", $(this).data("target"));
+            console.log("data-toggle:", $(this).data("toggle"));
+
+            $($(this).data("target")).html("456");
+        });
+
+
+
+        $("button").click(function () {
+            console.log("data-target:", $(this).data("target"));
+            console.log("data-toggle:", $(this).data("toggle"));
+
+            $($(this).data("target")).html("456");
+
+            console.log($(".box").data("bg"));
+            if ($(".box").data("bg")) {
+                const bg = $(".box").css("background-image");
+                const oldBg = $(".box").data("bg");
+
+                $(".box").css("background-image", oldBg);
+                $(".box").data("bg", bg);
+            } else {
+                const bg = $(".box").css("background-image");
+                $(".box").data("bg", bg);
+                $(".box").css("background-image", getRBGA());
+            }
+        });
+    </script>
+</body>
+
+</html>

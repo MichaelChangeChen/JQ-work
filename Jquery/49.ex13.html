@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    body{
+        background-color: black;
+    }
+    ul{
+        height: 100vh;
+        align-content: center;
+    }
+    .box {
+        width: 1400px;
+        height:700px;
+        transition: .2s ease-in-out;
+    }
+    li,
+    img {
+        width: 100px;
+        height: 100px;
+        list-style: none;
+    }
+
+    /* li:nth-child(1) {
+        background: rgb(217, 219, 98);
+    }
+
+    li:nth-child(2) {
+        background: rgb(219, 156, 98);
+    }
+
+    li:nth-child(3) {
+        background: rgb(98, 195, 219);
+    }
+
+    li:nth-child(4) {
+        background: rgb(191, 98, 219);
+    }
+    li:nth-child(5) {
+        background: rgb(98, 219, 138);
+    } */
+</style>
+
+<body>
+
+    <div class="row">
+
+        <ul class="col">
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/68835096272773.5eaa819c4732a.jpg" alt="">
+            </li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/af857d96272773.5eaa819c4664e.jpg" alt="">
+            </li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a8e5a696272773.5eaa819c46159.jpg" alt="">
+            </li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/73061996272773.5eaa819c459c1.jpg" alt="">
+            </li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/de13b896272773.5eaa819c4519e.jpg" alt="">
+            </li>
+        </ul>
+        <div class="box"></div>
+
+
+    </div>
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $('img').click(function () {
+            console.log($(this).attr('src'))
+            $('.box').attr('style', "background:url(\"" + $(this).attr('src') + "\") center center no-repeat")
+        })
+
+            
+
+    </script>
+</body>
+
+</html>

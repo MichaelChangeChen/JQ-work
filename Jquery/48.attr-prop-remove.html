@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <button class="addAttr">console log attr</button>
+      <input type="checkbox" id="attr" checked>
+    <button class="removeAttr">remove attr</button>
+    <button class="setAttr">set attr</button>
+    <button class="getProp">get prop</button>
+    <button class="setProp">set prop</button>
+    <button class="removeProp">remove prop</button>
+
+    
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $('.addAttr').click(function(){
+            console.log($('#attr').attr('checked'))
+        })
+        
+        $('.removeAttr').click(function(){
+            $('#attr').removeAttr('checked')
+        })
+        // add (true) 為增加
+        $('.setAttr').click(function(){
+            $('#attr').attr('checked',true)
+        })
+        $('.getProp').click(function(){
+            console.log('prop:',$('#attr').prop('checked'))
+            // $('#attr').prop('checked')
+        })
+        $('.setProp').click(function(){
+            
+            $('#attr').prop('michael','hello')
+            console.log('prop:',$('#attr').prop('michael'))
+        })
+        $('.removeProp').click(function(){
+            
+            $('#attr').removeProp('michael')
+            console.log('prop:',$('#attr').prop('michael'))
+        })
+
+
+    </script>
+</body>
+</html>

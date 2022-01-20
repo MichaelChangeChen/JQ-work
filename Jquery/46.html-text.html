@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    span{
+        color:red;
+    }
+</style>
+<body>
+      <button id="getText">GET TEXT</button>
+      <button id="getHtml">GET HTML</button>
+      <button id="getHtmlText">GET HTML TEXT</button>
+      <button id="getH1Text">GET H1 TEXT</button>
+      <button id="getH1Html">GET H1 Html</button>
+
+
+    <h1 id="sample"> Hello <span>World</span></h1>
+    <h1 id="result"> </h1>
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        $('#getText').click(function(){
+           const content = $('#sample').text();
+            $('#result').text(content);
+        })
+        //  .text() 抓純文字 不包含標籤(吃的不到css元素)
+        $('#getHtml').click(function(){
+           const content = $('#sample').html();
+            $('#result').html(content);
+        }) 
+        //  .html() 抓文字包含標籤(吃的到css元素)
+        $('#getHtmlText').click(function(){
+           const content = $('#sample').html();
+            $('#result').text(content);
+        }) 
+        $("#getH1Text").click(function () {
+        const content = $("h1").text();
+        $("#result").text(content);
+      });
+    </script>
+</body>
+</html>
