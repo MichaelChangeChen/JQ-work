@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: rgb(0, 0, 0);
+    }
+    .block{
+        width: 500px;
+        height: 2500px;
+        border: 1px solid tomato;
+        margin: 20px ;
+    }
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: rgb(60, 61, 61);
+        border-radius: 50%;
+        box-shadow: 8px -8px 5px red,12px -12px 10px rgba(223, 235, 55, 0.767),15px -15px 30px rgba(255, 113, 113, 0.452);
+        opacity:0;
+        transition: .5s ease-in-out;
+        transform: translateX(600px) translateY(-400px);
+
+    }
+    .show{  
+       
+        opacity: 1;
+        transform: translateX(400px);
+    }
+</style>
+<body>
+    <div class="block"></div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="block"></div>
+    
+
+
+    
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        console.log($('.box').offset())
+        console.log('top',$('.box').offset().top)
+        console.log('left',$('.box').offset().left)
+
+        $(window).scroll(function(){
+            // console.log($(window).scrollTop())
+            if($(window).scrollTop() >= $('.box').offset().top - $(window).height() / 2){
+                console.log('hi')
+                $('.box').eq(0).addClass('show')
+                $('.box').eq(1).removeClass('show')
+            }
+            if($(window).scrollTop() <= $('.box').offset().top - $(window).height() / 2){
+                $('.box').eq(1).addClass('show')
+                $('.box').eq(0).removeClass('show')
+            }
+        })
+    </script>
+</body>
+</html>

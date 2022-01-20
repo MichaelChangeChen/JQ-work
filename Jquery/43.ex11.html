@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+<style>
+    body {
+        margin: 0;
+        height: 300vh;
+    }
+
+    .box {
+        height: calc(100vh - 50px);
+    }
+
+    .nav {
+        height: 50px;
+        outline: 1px solid tomato;
+    }
+
+  .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+    <div class="nav">nav</div>
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        let  ii=$('.nav').offset().top
+        $(window).scroll(function(){
+            
+         
+             
+          
+          if($(window).scrollTop() >= ii){
+              console.log('hiii',$('.nav').offset().top)
+              $('.nav').addClass('fixed')
+          }
+          if($(window).scrollTop()<= ii){
+            $('.nav').removeClass('fixed')
+          }
+            
+        })
+    </script>
+</body>
+
+</html>
