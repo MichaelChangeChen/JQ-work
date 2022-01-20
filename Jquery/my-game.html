@@ -28,6 +28,7 @@
             transform: rotate(20deg);
         }
     }
+
     @keyframes people-work-head {
         0% {
             transform: translate(1px, 0px);
@@ -261,23 +262,22 @@
             }
         })
         //create some small-man
-            let positionStyle = 0;
-            let peopleArray = [];
-            
+        let positionStyle = 0;
+        let peopleArray = [];
+
         for (let i = 0; i < 41; i++) {
             positionStyle =
             {  //  game start ... people's position
                 'bottom': `${Math.floor(Math.random() * 200 + 30)}px`,
                 'left': `${Math.floor(Math.random() * 100)}vw`
-
             }
             // console.log($('.people-box').css('top'))
             peopleArray.push($('.people-box').clone().css(positionStyle))
             // console.log(peopleArray)
         }
         // console.log(peopleArray)
-       $('.floor').append(peopleArray)
-// .css('left','')
+        $('.floor').append(peopleArray)
+        // .css('left','')     eq(0)
 
     </script>
 </body>
