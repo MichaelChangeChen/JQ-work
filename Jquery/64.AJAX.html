@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+</head>
+
+<body>
+
+    <!-- 在XAMPP的test裡 用Localhost開 -->
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+
+        $("form").on("submit", function (event) {
+            event.preventDefault();
+            console.log($(this).serialize());
+
+
+            //傳送方式, serialize()送出的值
+            $.ajax({
+                method: "POST",
+                url: "test-api.php",
+                data: $(this).serialize()
+            })
+                //送出後要做的事用 .done來接
+                .done(function (msg) {
+                    console.log('msg',typeof msg)
+                    //SON.parse(msg)將字串轉成JSON
+                    const newMsg = JSON.parse(msg)
+                    console.log('newMsg',typeof newMsg)
+                    //newMsg.username印出物件username
+                    alert("Data Saved: " + newMsg.username);
+                });
+        });
+    </script>
+</body>
+
+</html>
