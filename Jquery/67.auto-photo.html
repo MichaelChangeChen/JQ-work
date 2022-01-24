@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body {
+        background-color: #000;
+    }
+
+    .wrap {
+        max-width: 800px;
+        height: 600px;
+        overflow: hidden;
+        margin: 50px auto;
+        position: relative;
+    }
+
+    ul.img-wrap {
+        display: flex;
+        width: 4800px;
+        transition: 0.5s;
+        transform: translateX(0px);
+    }
+
+    li img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    ul.slider-dots {
+        position: absolute;
+        bottom: 0;
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .slider-dots li {
+        width: 40px;
+        height: 10px;
+        border: 1px solid #fff;
+        margin: 10px;
+    }
+
+    .slider-dots li:nth-child(1) {
+        background: #fff;
+    }
+
+    #btn-left-area {
+        background: linear-gradient(to right, rgba(63, 63, 63, 0.473), rgba(255, 255, 255, 0));
+        width: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+
+    #btn-right-area {
+        background: linear-gradient(to left, rgba(63, 63, 63, 0.473), rgba(255, 255, 255, 0));
+        width: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    #btn-left-area {
+        left: 0;
+    }
+
+    #btn-right-area {
+        right: 0;
+    }
+
+    .fa-chevron-left,
+    .fa-chevron-right {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <ul class="list-unstyled img-wrap">
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/de13b896272773.5eaa819c4519e.jpg"
+                alt="" /></li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/68835096272773.5eaa819c4732a.jpg"
+                    alt="" /></li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/af857d96272773.5eaa819c4664e.jpg"
+                    alt="" /></li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a8e5a696272773.5eaa819c46159.jpg"
+                    alt="" /></li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/73061996272773.5eaa819c459c1.jpg"
+                    alt="" /></li>
+            <li><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/de13b896272773.5eaa819c4519e.jpg"
+                    alt="" /></li>
+           
+        </ul>
+
+        <ul class="slider-dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div id="btn-left-area">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div id="btn-right-area">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+
+
+    <script src="/Jquery/jquery-3.6.0.js"></script>
+    <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
+    <script>
+        let page = 0;
+      let myInterval = null;
+
+      $(".slider-dots li").hover(function () {
+        console.log("this", $(this).index());
+        page = $(this).index();
+        $(this)
+          .css("background", "#fff")
+          .siblings()
+          .css("background", "transparent");
+
+        // if ($(this).index() === 0) {
+        //   $("ul.img-wrap").css("transform", "translateX(0px)");
+        // }
+        // if ($(this).index() === 1) {
+        //   $("ul.img-wrap").css("transform", "translateX(-800px)");
+        // }
+        // if ($(this).index() === 2) {
+        //   $("ul.img-wrap").css("transform", "translateX(-1600px)");
+        // }
+
+        const moveX = $(this).index() * -800;
+        $("ul.img-wrap").css("transform", `translateX(${moveX}px)`);
+      });
+
+      $("#btn-left-area").click(function () {
+        console.log("btn-left-area clicked");
+      });
+
+      $("#btn-right-area").click(function () {
+        page++;
+        console.log("btn-right-area clicked", page);
+        if (page >= 5) page = 0;
+        console.log("btn-right-area clicked new page:", page);
+        const moveX = page * -800;
+        $("ul.img-wrap").css("transform", `translateX(${moveX}px)`);
+
+        // 改變白色的指示點
+        $(".slider-dots li")
+          .eq(page)
+          .css("background", "#fff")
+          .siblings()
+          .css("background", "transparent");
+      });
+
+      function startInterval() {
+        myInterval = setInterval(() => {
+          page++;
+          console.log("btn-right-area clicked", page);
+          // if (page >= 5) page = 0;
+          console.log("btn-right-area clicked new page:", page);
+          const moveX = page * -800;
+          $("ul.img-wrap")
+            .css("transition", "0.5s")
+            .css("transform", `translateX(${moveX}px)`);
+
+          // 改變白色的指示點
+          $(".slider-dots li")
+            .eq(page === 5 ? 0 : page)
+            .css("background", "#fff")
+            .siblings()
+            .css("background", "transparent");
+        }, 1500);
+      }
+
+      $("ul.img-wrap").on("transitionend", function () {
+        console.log("transitionend");
+        if (page >= 5) {
+          $("ul.img-wrap")
+            .css("transition", "none")
+            .css("transform", `translateX(0px)`);
+          page = 0;
+        }
+      });
+
+      startInterval();
+
+      $(".wrap").hover(
+        function () {
+          clearInterval(myInterval);
+        },
+        function () {
+          startInterval();
+        }
+      );
+    </script>
+</body>
+
+</html>

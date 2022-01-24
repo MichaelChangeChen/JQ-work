@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
 </head>
 <style>
+    /* 人走路動畫 */
     @keyframes people-work1 {
         0% {
             transform: rotate(20deg);
@@ -38,6 +39,30 @@
             transform: translate(-1px, 0px);
         }
     }
+
+    /* 人消失動畫 */
+    @keyframes people-disappear {
+        0% {
+            transform: rotate(0deg) ;
+            opacity: 1;
+        }
+        25% {
+            opacity: 1;
+        }
+        100% {
+            transform: rotate(.7turn);
+            opacity: 0;
+        }
+    }
+    @keyframes people-disappear2 {
+        0% {
+            transform: translateY(0px) ;
+        }
+        100% {
+            transform: translateY(-170px) ;
+        }
+    }
+   
 
     .game-box {
         overflow: hidden;
@@ -105,26 +130,26 @@
     }
 
     .ufo-linght {
-        width: 25px;
+        width: 30px;
         height: 170px;
         box-shadow: 0 0 20px rgb(255, 255, 122);
         background: linear-gradient(to bottom, rgb(255, 255, 122) 30%, rgba(255, 255, 0, 0.336));
         position: absolute;
         top: 20px;
-        left: -13px;
+        left: -15px;
         z-index: 1;
         transition: .8s;
     }
 
     .ufo-circle {
-        width: 22px;
+        width: 24px;
         height: 6px;
         border-radius: 50%;
         background: rgba(255, 255, 122, 0.342);
         box-shadow: 10px 0 20px rgba(110, 255, 243, 0.705), -10px 0 20px rgba(110, 255, 243, 0.623);
         position: absolute;
         top: 165px;
-        left: 2px;
+        left: 3px;
         transition: 1s;
 
     }
@@ -133,12 +158,24 @@
         position: absolute;
         left: 200px;
         bottom: 30px;
+        transition: .5s;
+    }
+
+    .people-gone {
+        position: absolute;
+        animation: people-disappear ease-in-out .5s  ;
+        transition: .5s;
+    }
+    .people-fly{
+        animation: people-disappear2 ease-in-out .5s ;
+        transition: .5s;
     }
 
     .people {
         position: relative;
         width: 10px;
         height: 10px;
+        transition: .5s;
     }
 
     .head {
@@ -240,32 +277,111 @@
     <script src="/Jquery/jquery-3.6.0.js"></script>
     <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
     <script>
+
+
         $(document).on('keydown', function () {
-            // console.log('hi', event)
+
             if (event.key === 'ArrowUp') {
-                $('.ufo-position').css('top', '-=50')
+                $('.ufo-position').css('top', '-=40')
+
+                //預想設置 空白見開啟時 左右移動可以直接吸起人
+                // if(Math.floor($('.ufo-circle').position().top === 165)){
+                //     console.log('weapon ready!')
+                // console.log(Math.floor($('.ufo-circle').position().top))
+                // }
+
             } if (event.key === 'ArrowDown') {
-                $('.ufo-position').css('top', '+=50')
+                $('.ufo-position').css('top', '+=40')
             } if (event.key === 'ArrowLeft') {
-                $('.ufo-position').css('left', '-=50')
+                $('.ufo-position').css('left', '-=40')
             } if (event.key === 'ArrowRight') {
-                $('.ufo-position').css('left', '+=50')
+                $('.ufo-position').css('left', '+=40')
             } if (event.key === 'Enter') {
                 $('.ufo').css('background-color', 'rgb(179, 179, 179)')
                 $('.ufo').css('box-shadow', 'none')
                 $('.ufo-wep').removeClass('ufo-linght')
                 $('.ufo-ci').removeClass('ufo-circle')
+                console.log($('.ufo-ci').offset())
             } if (event.key === ' ') {
                 $('.ufo').css('box-shadow', '0 0 30px rgb(0, 255, 242), 0 0 4px rgb(0, 255, 242)inset')
                 $('.ufo-wep').addClass('ufo-linght')
                 $('.ufo-ci').addClass('ufo-circle')
+                peopleGone();
+
             }
         })
+        // ----------功能區-------------
+
+
+        //抓取人物的寬高,以點擊空白建後觸發功能
+
+        function peopleSizeTop(ufo, peo) {
+            return ((ufo >= peo +10) && (ufo <= peo + 50))
+        }
+        function peopleSizeLeft(ufo, peo) {
+            return ((ufo >= peo - 17) && (ufo <= peo + 12))
+        }
+
+
+        // peopleGone() 判斷物件位置  是否互相對應
+         function peopleGone() {
+            let peopleTop = $('.people-box').offset()['top'];
+            let peopleLeft = $('.people-box').offset()['left'];
+            let ufoTop = $('.ufo-ci').offset().top;
+            let ufoLeft = $('.ufo-ci').offset().left;
+            if (peopleSizeTop(ufoTop, peopleTop) && peopleSizeLeft(ufoLeft, peopleLeft)) {
+                console.log('ok')
+              //設法指定people做消失
+
+
+              
+                //如果OK  開始放置功能
+                $('.people-box').addClass('people-fly')
+                $('.people').addClass('people-gone')
+
+                
+
+                //設定.5秒清除calss name
+                setTimeout(function(){ 
+                $('.people').remove()
+                }, 500);
+                
+
+            }
+
+            console.log('ufo', $('.ufo-ci').offset())
+            console.log('peo', $('.people-box').offset())
+
+        }
+
+
+
+
+
+        //     .people-box {
+        //     position: absolute;
+        //     left: 200px;
+        //     bottom: 30px;
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //create some small-man
         let positionStyle = 0;
         let peopleArray = [];
 
-        for (let i = 0; i < 41; i++) {
+        for (let i = 0; i < 1; i++) {
             positionStyle =
             {  //  game start ... people's position
                 'bottom': `${Math.floor(Math.random() * 200 + 30)}px`,
@@ -278,6 +394,13 @@
         // console.log(peopleArray)
         $('.floor').append(peopleArray)
         // .css('left','')     eq(0)
+        // console.log(peopleArray.offset())
+        // peopleArray.offset().forEach(function(ww,ee) {
+            // console.log('peo:',ee)
+            // console.log('xy:',ww)
+        // });
+        // if($('.ufo-ci').offset() ==)
+
 
     </script>
 </body>
