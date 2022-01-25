@@ -43,26 +43,30 @@
     /* 人消失動畫 */
     @keyframes people-disappear {
         0% {
-            transform: rotate(0deg) ;
+            transform: rotate(0deg);
             opacity: 1;
         }
+
         25% {
             opacity: 1;
         }
+
         100% {
             transform: rotate(.7turn);
             opacity: 0;
         }
     }
+
     @keyframes people-disappear2 {
         0% {
-            transform: translateY(0px) ;
+            transform: translateY(0px);
         }
+
         100% {
-            transform: translateY(-170px) ;
+            transform: translateY(-170px);
         }
     }
-   
+
 
     .game-box {
         overflow: hidden;
@@ -163,11 +167,12 @@
 
     .people-gone {
         position: absolute;
-        animation: people-disappear ease-in-out .5s  ;
+        animation: people-disappear ease-in-out .5s;
         transition: .5s;
     }
-    .people-fly{
-        animation: people-disappear2 ease-in-out .5s ;
+
+    .people-fly {
+        animation: people-disappear2 ease-in-out .5s;
         transition: .5s;
     }
 
@@ -316,7 +321,7 @@
         //抓取人物的寬高,以點擊空白建後觸發功能
 
         function peopleSizeTop(ufo, peo) {
-            return ((ufo >= peo +10) && (ufo <= peo + 50))
+            return ((ufo >= peo + 10) && (ufo <= peo + 50))
         }
         function peopleSizeLeft(ufo, peo) {
             return ((ufo >= peo - 17) && (ufo <= peo + 12))
@@ -324,28 +329,28 @@
 
 
         // peopleGone() 判斷物件位置  是否互相對應
-         function peopleGone() {
+        function peopleGone() {
             let peopleTop = $('.people-box').offset()['top'];
             let peopleLeft = $('.people-box').offset()['left'];
             let ufoTop = $('.ufo-ci').offset().top;
             let ufoLeft = $('.ufo-ci').offset().left;
             if (peopleSizeTop(ufoTop, peopleTop) && peopleSizeLeft(ufoLeft, peopleLeft)) {
                 console.log('ok')
-              //設法指定people做消失
+                //設法指定people做消失
 
 
-              
+
                 //如果OK  開始放置功能
                 $('.people-box').addClass('people-fly')
                 $('.people').addClass('people-gone')
 
-                
 
-                //設定.5秒清除calss name
-                setTimeout(function(){ 
-                $('.people').remove()
+
+                //設定.5秒清除calssName .people
+                setTimeout(function () {
+                    $('.people').remove()
                 }, 500);
-                
+
 
             }
 
@@ -354,7 +359,12 @@
 
         }
 
-
+        // var Polygon = class {
+        //     constructor(bottom, left) {
+        //         this.bottom = bottom;
+        //         this.left = left;
+        //     }
+        // };
 
 
 
