@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form name="form1" onsubmit="sendData(); return false;">
+        name
+        <input type="text" name="name" placeholder="man???"><br>
+        gender
+        <select name="gender" >
+            <option value="female">female</option>
+            <option value="male">male</option>
+            <option value="helf">helf</option>
+        </select><br>
+        age
+        <input type="number" name="age" placeholder="18???"><br>
+        <button  >send</button>
+    </form>
+
+    <script>
+        
+     
+        function sendData(){
+            fetch('/try-post',{
+                method:"POST",
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                //順序為 拿到document.form1  做 new FormData 在new URLSearchParams 最後.toString()
+                body: new URLSearchParams(new FormData(document.form1)).toString()
+            }).then(r=>r.json())
+            .then(obj =>{
+                console.log(obj);
+            })
+        }
+
+        //const u = new URLSearchParams()
+        //u.append('name','mike')
+        //u.append('age',23)
+        //u.toString()  ==> 'name=mike&age=23'
+
+
+        
+    </script>
+</body>
+</html>

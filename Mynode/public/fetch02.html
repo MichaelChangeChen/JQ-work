@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="sendData()">send</button><br>
+    <!-- <form action="part2" enctype="">
+        name
+        <input type="text" name="name"><br>
+        gender
+        <input type="text" name="gender" ><br>
+        age
+        <input type="text" name="age" ><br>
+        <button id="part2" onclick="sendData2()" >send</button>
+    </form> -->
+
+    <script>
+        const name = "Michael";
+        const gender = "Male";
+        const age = 33;
+     
+        function sendData(){
+            fetch('/try-post',{
+                method:"POST",
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({name,gender,age}).toString()
+            }).then(r=>r.json())
+            .then(obj =>{
+                console.log(obj);
+            })
+        }
+
+        //const u = new URLSearchParams()
+        //u.append('name','mike')
+        //u.append('age',23)
+        //u.toString()  ==> 'name=mike&age=23'
+
+
+        
+    </script>
+</body>
+</html>

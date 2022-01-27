@@ -1,0 +1,36 @@
+回應
+res.end()
+res.send()
+res.json()
+res.render()
+以上只能使用其中之一,不能重複
+
+
+ 輸入的資料
+
+req.query 拿到的是  string(POST)
+req.body  拿到的是 表單的資料(GET)
+
+
+middleware
+
+
+
+作業提示:
+用switch case
+
+["name","age","id"]
+
+a,b
+
+const col = req.query.orderByCol
+
+a[col]
+
+-1
+
+
+作業二:
+紀錄調整的內容
+下拉是選單送出後
+內容會是上次送出時一樣
