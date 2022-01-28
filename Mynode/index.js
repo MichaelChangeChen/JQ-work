@@ -10,7 +10,14 @@ const express = require('express');
 //呼叫multer
 const multer = require('multer');
 //dest目的地
-const upload = multer({dest:'tmp_uploads/'})
+// const upload = multer({dest:'tmp_uploads/'})
+const upload = require(__dirname + '/modules/upload-imgs');
+
+
+//.promises 才可以使用 async  await
+const fs = require('fs').promises;
+
+
 
 // 2. 建立web server 物件
 const app = express();
@@ -62,7 +69,9 @@ app.get('/json-sales', (req, res) => {
     const col = req.query.orderByCol
     const rule = req.query.orderByRule
 
+    if(col='name'){
 
+    }
     console.log(req.query);
     // res.render('json-sales',{sales})
     // console.log(sales); 
@@ -99,10 +108,39 @@ app.post('/try-post-form', (req, res)=>{
 
 
 //----------------try-upload-----------------
-app.post('/try-upload',upload.single('avatar'), (req, res)=>{
-    // res.json(req.body);
+app.post('/try-upload', upload.single('avatar'),async (req, res)=>{
     res.json(req.file);
+
+
+
+
+    // const types = ['image/jpeg','image/png'];
+    // const f = req.file;
+    // if(f && f.originalname){
+        //.includes  選取array中的雙物件
+        // if(types.includes(f.mimetype)){
+            //.rename重新寫路徑
+//             await fs.rename(f.path, __dirname +'/public/img/'+ f.originalname);
+//             return res.redirect('/img/' + f.originalname);
+//         }else{
+//             return res.send('檔案不符合')
+//         }
+//     }
+//     res.send('bad');
 });
+//上傳多個資料
+app.post('/try-uploads', upload.array('photos'), async (req, res)=>{
+    
+const result = req.files.map(({mimetype,filename,size}) =>{
+    return {mimetype,filename,size};
+});
+res.json(result);
+
+    // res.json(req.files);
+});
+
+
+// app.get('/try-upload',)
 
 //-------------------------------------
 
