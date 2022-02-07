@@ -26,12 +26,20 @@ const app = express();
 app.set('view engine', 'ejs');
 
 //middleware 是這支urlencoded  (夜店保安,一開始就先過濾)
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 //第二次過濾 只接受json
 app.use(express.json());
 
 //放在所有路由設定的前面
 app.use(express.static('public'));
+
+//自訂的middleware(過濾器)
+app.use((req,res,next)=>{
+
+    res.locals.qqq = 'hello';
+    // res.send('oooo'); // 回應之後, 不會往下個路由規則
+    next();
+})
 
 // 3. 路由設定  只接受GET的方法
 app.get('/', (req, res) => {
@@ -45,8 +53,7 @@ app.get('/a/b', (req, res) => {
     //render()呈現樣板
     res.render('home', { name: 'Michael' });
 });
-//這段不太明白-------------------------
-
+//-------------------------
 //-------------json-sales--------------
 //抓取  json陣列
 app.get('/json-sales', (req, res) => {
@@ -69,7 +76,7 @@ app.get('/json-sales', (req, res) => {
     const col = req.query.orderByCol
     const rule = req.query.orderByRule
 
-    if(col='name'){
+    if (col = 'name') {
 
     }
     console.log(req.query);
@@ -77,70 +84,92 @@ app.get('/json-sales', (req, res) => {
     // console.log(sales); 
     //send()的是傳字串
     // res.send(sales[1].name);
-    res.render('json-sales',{sales});
+    res.render('json-sales', { sales });
 });
 //----------------------------------------
-
-
-
 ///-------------try-qs----------query
 app.get('/try-qs', (req, res) => {
     res.json(req.query);
 })
 ///------------------------------
-
 ///--------------try-post----------
 app.post('/try-post', (req, res) => {
     res.json(req.body);
 })
 ///--------------------------------
-
-
 //---------/try-post-form-------------
 
-app.get('/try-post-form', (req, res)=>{
+app.get('/try-post-form', (req, res) => {
     res.render('try-post-form');
 });
-app.post('/try-post-form', (req, res)=>{
+app.post('/try-post-form', (req, res) => {
     res.render('try-post-form', req.body);
 });
 //-------------------------------------
-
-
 //----------------try-upload-----------------
-app.post('/try-upload', upload.single('avatar'),async (req, res)=>{
+app.post('/try-upload', upload.single('avatar'), async (req, res) => {
     res.json(req.file);
-
-
-
 
     // const types = ['image/jpeg','image/png'];
     // const f = req.file;
     // if(f && f.originalname){
-        //.includes  選取array中的雙物件
-        // if(types.includes(f.mimetype)){
-            //.rename重新寫路徑
-//             await fs.rename(f.path, __dirname +'/public/img/'+ f.originalname);
-//             return res.redirect('/img/' + f.originalname);
-//         }else{
-//             return res.send('檔案不符合')
-//         }
-//     }
-//     res.send('bad');
+    //.includes  選取array中的雙物件
+    // if(types.includes(f.mimetype)){
+    //.rename重新寫路徑
+    //             await fs.rename(f.path, __dirname +'/public/img/'+ f.originalname);
+    //             return res.redirect('/img/' + f.originalname);
+    //         }else{
+    //             return res.send('檔案不符合')
+    //         }
+    //     }
+    //     res.send('bad');
 });
+//-------------------------------------
+//----------------try-uploads-----------------
 //上傳多個資料
-app.post('/try-uploads', upload.array('photos'), async (req, res)=>{
-    
-const result = req.files.map(({mimetype,filename,size}) =>{
-    return {mimetype,filename,size};
-});
-res.json(result);
+app.post('/try-uploads', upload.array('photos'), async (req, res) => {
+
+    const result = req.files.map(({ mimetype, filename, size }) => {
+        return { mimetype, filename, size };
+    });
+    res.json(result);
 
     // res.json(req.files);
 });
+//-------------------------------------
+//----------------my-params-----------------
+//: 冒號之後為代稱名
+app.get('/my-params1/:action/:id', (req, res) => {
+    res.json(req.params);
+})
+
+//? 為選擇性的
+app.get('/my-params2/:action?/:id?', (req, res) => {
+    res.json(req.params);
+})
+
+//* 為wildcard 不建議使用
+app.get('/my-params3/*/*?', (req, res) => {
+    res.json(req.params);
+})
+//-------------------------------------
+//----------------m0923-903-903-----------------
+//get手機號碼找資料庫  ^自首(行首)   i不區分大小寫 最前面第一個(/)與最後一個(/)是判斷regular
+app.get(/^\/m\/09\d{2}-?\d{3}-?\d{3}$/i, (req, res) => {
+    let u = req.url.split('?')[0];//split從問號開始切割 會得到兩個物件(?號前與?號後),拿取[0](問號前的物件)
+    u = u.slice(3); //從字串第三個開始算起(去除掉/m/)
+    //用空字串取代所有的字串  如同// u = u.split('-').join('');  //g為全域的(replace只會取的一次 後面+ g 會改變所有想取代的字串)
+    u = u.replace(/-/g, ''); //replace代替
+
+    // res.json({url: req.url});
+    res.json({ mobile: u });
+})
+//-------------------------------------
+//--------------抓取./routes/admin2' -----------
+
+app.use('/admin2',require('./routes/admin2'));
 
 
-// app.get('/try-upload',)
 
 //-------------------------------------
 

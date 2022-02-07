@@ -6,14 +6,18 @@ res.render()
 res.redirect()  轉向
 以上只能使用其中之一,不能重複
 
-
  輸入的資料
 
-req.query 拿到的是  string(POST)
-req.body  拿到的是 表單的資料(GET)
+req.query 拿到的是  string(GET)
+req.body  拿到的是 表單的資料(POST)
+
+req.params # 路徑上的變數代稱
+
+req.file   # multer 檔案上傳
+req.files  # multer 多個檔案上傳
 
 
-middleware
+middleware   過濾
 
 
 
