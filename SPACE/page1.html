@@ -8,83 +8,138 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100;300;400;500;700;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100;300;400;500&family=Noto+Sans+TC:wght@500;700;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <style>
     body {
         margin: 0;
         padding: 0;
     }
-
     nav {
         box-shadow: 8px 0 15px black;
-        height: 70px;
+        height: 60px;
         width: 100%;
         background-color: #000000;
         display: flex;
         justify-content: space-between;
     }
-
     .UA-logo {
-        width: 200px;
-        background-color: #242424;
+        width: 180px;
+        background: url('./Mask-Grouplogo.png') no-repeat center center /cover;
+    }
+    .UA-logo::before {
+        content: '';
+        background-size: 700%;
+        width: 180px;
+        height: 60px;
+        position: absolute;
+        background-image:linear-gradient(90deg, #f2056000 0%, #f2050500 40%, hsla(0, 0%, 0%, 0.4) 50%, rgba(0, 0, 0, 0.4) 55%,#00000000 65%, #00000000 100%);
     }
 
+    .UA-logo:hover::before {
+        animation: glace 2s infinite;
+    }
     ul {
         list-style-type: none;
         display: flex;
         text-align: center;
         align-items: center;
         font-size: 20px;
-        /* gap:14px; */
     }
-
     li {
-        margin: 35px;
-        
+        width: 110px;
     }
-
     li a {
         color: rgba(240, 248, 255, 0.8);
         text-decoration: none;
-       
+        transition: .3s ease-in-out;
     }
-
     li:nth-child(6) {
         width: 1px;
         height: 30px;
-        margin: 0;
+        margin: 0 -40px;
         background-color: aliceblue;
     }
-
     li:nth-child(7) {
-        margin-left: 10px;
+        margin-left: 30px;
+    }   
+
+    li:nth-child(8) a img{
+        width: 25px;
+        margin-right: 70px;
+        filter:Contrast(.6);
+        transition: .4s ease-in-out;
+    }
+   
+    li:nth-child(8) a img:hover{
+        width: 27px;
+        filter:Contrast(1);
+
+    }
+   
+    li:nth-child(8) a::after{
+        opacity: .8;
+        text-align: center; 
+        color: #000000;
+        font-size: 8px;
+        content:'1';
+        position: absolute;
+        right: 7px;
+        top: 28px;
+        width: 10px;
+        height: 13px;
+        border-radius: 50%;
+        background-color:#05f2f2;
+        margin-right: 70px;
     }
 
     li:nth-child(5) {
-        margin-right: 10px;
+        margin-right: 20px;
     }
 
     ul li:nth-child(1) a {
-        /* color: #05f2f2; */
-        background-image: linear-gradient(90deg, #05f2f2 35%, black );
+        margin-right: 40px;
+        background-image: linear-gradient(90deg, #05f2f2 0%, #000 27%);
+        background-size: 500%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        position: relative;
     }
 
+    ul li:nth-child(1) a::before {
+        content: '';
+        width: 100px;
+        height: 30px;
+        background: linear-gradient(90deg, #f2056000 0%, #f2050500 40%, rgb(0, 0, 0, .7) 50%, rgb(0, 0, 0, .7) 55%,#05f2f200 65%, #05f2f200 100%);
+        background-size: 400%;
+        position: absolute;  
+        left: -10px; 
+        top: -5px;     
+        animation: glace 3s infinite;
+    }
     li a:hover {
-        transition: .3s  ease-in-out  ;
-        /* background-color: rgba(110, 110, 110, 0.658); */
         font-size: 21px;
         color: rgba(240, 248, 255);
+    }
+
+    @keyframes glace {
+        from {
+            background-position: 100% 100%;
+        }
+        to {
+            background-position: 0% 0%;
+        }
     }
 </style>
 
 <body>
 
     <nav>
-        <div class="UA-logo"><img src="" alt=""></div>
+        <a class="UA-logo" href=""></a>
         <ul>
             <li><a href="">Schedule</a></li>
             <li><a href="">Booking</a></li>
@@ -93,13 +148,13 @@
             <li><a href="">Login</a></li>
             <li></li>
             <li><a href="">Register</a></li>
-            <li><a href=""><i>22</i></a></li>
-            <li></li>
+            <li><a href=""><img src="./Bag.png" alt=""></a></li>
+
         </ul>
 
     </nav>
 
-
+    <div class="aaa"></div>
 
 </body>
 
