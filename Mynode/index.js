@@ -2,10 +2,13 @@
 // console.log(process.env.NODE_ENV);
 //抓.env的內容
 require('dotenv').config();
+const { json } = require('express');
 // console.log(require('dotenv').config());
 // 1. 引入express
 const express = require('express');
 
+const session = require('express-session');
+const moment = require('moment-timezone');
 
 //呼叫multer
 const multer = require('multer');
@@ -17,7 +20,7 @@ const upload = require(__dirname + '/modules/upload-imgs');
 //.promises 才可以使用 async  await
 const fs = require('fs').promises;
 
-
+const db = require('./modules/connect-db')
 
 // 2. 建立web server 物件
 const app = express();
@@ -32,6 +35,18 @@ app.use(express.json());
 
 //放在所有路由設定的前面
 app.use(express.static('public'));
+
+
+
+app.use(session({
+    saveUninitialized: false, //強制將未初始化的session存回 session store，未初始化的意思是它是新的而且未被修改。
+    resave:false,  // 強制將session存回 session store, 即使它沒有被修改。預設是 true
+    secret:'asd251ds31as6da273sa813ds173sa813ds173sa813ds12a', //加密用的字串
+    cookie: {
+        maxAge: 1200000, // 20分鐘，單位毫秒
+        }
+}));
+
 
 //自訂的middleware(過濾器)
 app.use((req,res,next)=>{
@@ -169,10 +184,39 @@ app.get(/^\/m\/09\d{2}-?\d{3}-?\d{3}$/i, (req, res) => {
 
 app.use('/admin2',require('./routes/admin2'));
 
-
-
+//-------------------------------------
+//--------------抓取/try-session -----------
+app.get('/try-session',(req,res)=>{
+    req.session.my_var = req.session.my_var || 0;
+    req.session.my_var++;
+    res.json(req.session);
+})
+//-------------------------------------
+//--------------抓取/try-moment -----------
+app.get('/try-moment',(req,res)=>{
+    const fm = 'YYYY-MM-DD HH:mm:ss';
+    res.json({
+        TaipieTime: moment().format(fm), //format格式
+        LondonTime: moment().tz('Europe/London').format(fm), //expires過期
+        SessionTime: moment(req.session.cookie.expires).format(fm),
+        SessionTime_LondonTime: moment(req.session.cookie.expires).tz('Europe/London').format(fm),
+        
+    })
+    console.document.cookie;
+})
 //-------------------------------------
 
+//-------------------------------------
+app.get('/try-db',async (req,res)=>{
+    const sql = "SELECT * FROM address_book LIMIT 5";
+
+    const [rs,fields] = await db.query(sql);
+
+    res.json(rs);
+
+})
+
+//-------------------------------------
 //只接受USE的方法
 app.use((req, res) => {
     res.status(404).send('<h1 style="color:red">404唷~</h1>');
