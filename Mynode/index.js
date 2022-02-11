@@ -24,6 +24,11 @@ const fs = require('fs').promises;
 const db = require('./modules/connect-db');
 const sessionStore = new MysqlStore({}, db);//第一個{}是做連線設定,第二個試煉線位置
 
+const cors = require('cors');
+
+
+
+
 // 2. 建立web server 物件
 const app = express();
 
@@ -31,15 +36,24 @@ const app = express();
 app.set('view engine', 'ejs');
 // -------註冊樣版引擎-------
 
+
+const corsOptions = {
+    credentials: true,
+    origin: function(origin, cb){
+        console.log({origin});
+        cb(null, true);
+    }
+};
+app.use(cors(corsOptions));
 //middleware 是這支urlencoded  (夜店保安,一開始就先過濾)
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // application/x-www-form-urlencoded
 //第二次過濾 只接受json
-app.use(express.json());
+app.use(express.json()); // application/json
 
 //放在所有路由設定的前面
 app.use(express.static('public'));
-
-
+//
+app.use('/joi', express.static('node_modules/joi/dist/'));
 
 app.use(session({
     saveUninitialized: false, //強制將未初始化的session存回 session store，未初始化的意思是它是新的而且未被修改。
