@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 新的
+        class Animal {
+            constructor(name){
+                this.name = name;
+                Animal._count = Animal._count || 0;  //假的屬性 習慣名稱加上底線( _ )
+                Animal._count ++;
+            }
+
+            move(){
+               return '移動';
+            }
+            info(){
+                return this.name;
+            }
+            
+            toString(){
+                return '名字:' + this.name;
+            }
+
+            static getCount(){    // static 來定義一個靜態的方法（method）給類別（class）
+                return Animal._count || 0;
+            }
+
+            
+        }
+        //   extends ( 繼承 Animal)
+        class Human extends Animal {
+            constructor(name, gender='m'){
+                super(name);    //super通過函式存取父層  calls the parent constructor.
+                this.gender = gender;
+            }
+
+            //重新定義move後則會覆蓋(但Animal的move()還是存在)
+            move(){
+                return super.move + '跑步';
+            }
+        }
+
+        const a1 = new Animal('小白');
+        console.log( a1.info() );
+        console.log( '' + a1 );
+        console.log( a1 instanceof Animal );
+        a1.move();
+        
+
+        console.log('--------------');
+
+        const h1 = new Human('小明');
+        console.log( h1.info() );
+        console.log( h1.toString() );
+        console.log( h1 instanceof Animal );
+        h1.move();
+        console.log( Animal.getCount() );
+
+        
+
+
+    </script>
+</body>
+</html>

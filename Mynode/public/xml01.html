@@ -1,0 +1,37 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- 抓取XML -->
+    <script src="js/jquery-3.6.0.js"></script>
+    <script>
+        const xml = `
+<apple>
+    <person uid="A002">
+        <name>Bill</name>
+        <age>29</age>
+    </person>
+    <person uid="A003">
+        <name>phill</name>
+        <age>55</age>
+    </person>
+</apple>`;
+
+        const doc = $(xml);
+        doc.find('person').each(function () {
+            console.log($(this).find('name').text());
+        })
+//再跑回圈
+    </script>
+</body>
+
+</html>

@@ -25,6 +25,8 @@ const db = require('./modules/connect-db');
 const sessionStore = new MysqlStore({}, db);//第一個{}是做連線設定,第二個試煉線位置
 
 const cors = require('cors');
+const fetch = require('node-fetch');
+const { default: axios } = require('axios');
 
 
 
@@ -249,7 +251,21 @@ app.get('/try-db',async (req,res)=>{
 
 })
 
-//-------------------------------------
+//node-fetch  做拜訪頁面用
+app.get('/yahoo', async (req, res)=>{
+
+    fetch('https://tw.yahoo.com/')
+        .then(r=>r.text())
+        .then(txt=>{
+            res.send(txt);
+        });
+
+});
+
+//axios
+
+
+//---------------寫在所有的路由後面----------------------
 //只接受USE的方法
 app.use((req, res) => {
     res.status(404).send('<h1 style="color:red">404唷~</h1>');
