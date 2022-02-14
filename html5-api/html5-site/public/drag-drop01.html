@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color:lightblue;
+            border: 1px pink solid;
+        }
+        .ball{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border: 1px lightblue solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="ball" draggable="true">1</div>
+    </div>
+    <script src="/../jquery-3.6.0.js"> </script>
+    <script>
+        const ball = document.querySelector('.ball');
+        
+        const listener = function(event){
+            console.log(event.type,event.target);
+        }
+        ball.addEventListener('dragstart',listener);
+        ball.addEventListener('dragend',listener);
+        //dragstart: 開始拖拉
+        //drag: 正在拖拉（類似mousemove）
+        //dragend: 結束拖拉
+
+
+
+    </script>
+</body>
+</html>
