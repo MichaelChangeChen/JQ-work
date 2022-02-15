@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            border: 1px pink solid;
+        }
+
+        .ball {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border: 1px lightblue solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="ball" draggable="true">1</div>
+        <div class="ball" draggable="true">2</div>
+        <div class="ball" draggable="true">3</div>
+    </div>
+    <div class="box" style="left: 400px; top: 0px">
+
+        <script src="./javascripts/jquery-3.6.0.js"> </script>
+        <script>
+            const box = $('.box');
+            const ball = $('.ball');
+            const listener = function (event) {
+                console.log(event.type, event.target);
+            }
+            ball.on('dragstart', listener);
+            ball.on('dragend', listener);
+            //dragstart: 開始拖拉
+            //drag: 正在拖拉（類似mousemove）
+            //dragend: 結束拖拉
+
+            box.on('dragenter', listener);
+            box.on('dragleave', listener);
+            box.on('dragover', function (event) {
+                event.preventDefault();
+            });
+            //dragover 的處理器內要呼叫preventDefault()，才能觸發drop 事件。
+            box.on('drop', listener);
+        </script>
+</body>
+
+</html>

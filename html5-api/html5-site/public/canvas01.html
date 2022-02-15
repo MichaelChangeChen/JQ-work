@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myc {
+           background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas試點陣圖   svg是向量圖 -->
+    <canvas id="myc" width="700px" height="700px"></canvas>
+
+    <script>
+        const myc = document.querySelector('#myc');
+        const ctx = myc.getContext('2d');
+        //moveTo 提起筆
+        //lineTO 下筆畫至
+        // strokeStyle 設定畫筆顏色
+        // lineWidth 設定畫筆粗細
+        //stroke() 在路徑上畫線
+         ctx.beginPath();
+        ctx.moveTo(50, 50);
+        ctx.lineTo(200, 300);
+        ctx.lineTo(400, 50);
+        ctx.strokeStyle = 'hotpink';
+        ctx.lineWidth = 20;
+        ctx.stroke();
+
+
+
+    </script>
+</body>
+
+</html>
