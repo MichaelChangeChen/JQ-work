@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            border: 1px pink solid;
+            left: 0;
+            top: 0;
+            user-select: none;
+            /* pointer-events: none; */
+            /* pointer-events防止觸發event事件 */
+        }
+
+        .ball {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border: 1px lightblue solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: hotpink;
+            position: absolute;
+            left: 10px;
+            top: 50px;
+            cursor: pointer;
+            /* cursor: pointer;滑鼠樣式 */
+            user-select: none;
+            /*  user-select: none;防止文字選取 */
+        }
+        .rect {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #fdaa5d;
+            border: black solid 1px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            left: 10px;
+            top: 150px;
+            cursor: pointer;
+            user-select: none;
+            /* pointer-events: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="ball">1</div>
+        <div class="ball" style="left:70px;background-color:rgb(88, 88, 235)">2</div>
+        <div class="ball" style="left:140px;background-color:rgb(63, 197, 107) ">3</div>
+        <div class="rect  ball" style="border-radius: 0%;">4</div>
+    </div>
+
+
+
+    <script src="./javascripts/jquery-3.6.0.js"> </script>
+    <script>
+        const box = $('.box');
+         // 拖拉的對象
+        let dragTarget = {
+            t:null,
+            dx:0,
+            dy:0
+        }
+
+        const MDown = function (event) {
+            const t = $(event.target);
+            console.log('t:', t);
+            const c = $(event.currentTarget);
+            console.log('c:', c);
+            if(t.hasClass('ball')){
+                box.append(t);//處理覆蓋(上下層順序)問題
+
+
+            dragTarget.t = t;
+            dragTarget.dx = event.offsetX;
+            dragTarget.dy = event.offsetY;
+            console.log(dragTarget);
+
+            box.on('mousemove', MMove);
+        }
+
+
+
+        };
+    const MUp = function(event){
+        dragTarget.t = null;
+        box.off('mousemove', MMove);
+    };
+    const MMove = function(event){
+        if(! dragTarget.t) return;
+        dragTarget.t.css({
+            left: event.pageX - dragTarget.dx + 'px',
+            top: event.pageY - dragTarget.dy + 'px',
+        });
+    };
+    box.on('mousedown', MDown);
+    $(window).on('mouseup', MUp);
+
+
+    </script>
+</body>
+
+</html>
