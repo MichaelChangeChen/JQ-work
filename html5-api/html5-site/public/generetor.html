@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+    function* gen(){
+        yield 2;
+        yield 5;
+        yield 7;
+    }
+
+    const g = gen();
+    console.log( g.next() );
+    console.log( g.next() );
+    console.log( g.next() );
+    console.log( g.next() );
+
+    const ar = [1,3,5];
+
+    // iterator 迭代器, iterable 可迭代的
+    ar[Symbol.iterator] = gen;
+
+    console.log( [...ar]);
+    for(let i of ar){
+        console.log(i);
+    }
+
+
+    </script>
+</body>
+</html>
