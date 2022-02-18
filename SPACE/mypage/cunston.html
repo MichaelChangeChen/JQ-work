@@ -1,24 +1,79 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./reset.css">
 </head>
+<style>
+    .movie-select {
+        display: flex;
+        position: relative;
+    }
+
+    .suit {
+        background-color: rgb(204, 112, 112);
+        width: 33.333%;
+        height: 100vh;
+
+    }
+
+    .craft {
+        background-color: rgb(143, 159, 245);
+        width: 33.333%;
+        height: 100vh;
+    }
+
+    .seat {
+        background-color: rgb(176, 236, 186);
+        width: 33.333%;
+        height: 100vh;
+    }
+
+    .moon {
+        background: url(/mypage/mercury-png.png) no-repeat center/cover ;
+        width: 100%;
+        height: 130px;
+        position: absolute;
+        bottom: 0;
+        transform: rotate(30deg);
+    }
+   
+</style>
 <body>
-      <section>
-          
-      </section>
+    <section>
+        <div class="movie-select">
+            <div class="suit">
+                <a href="">
+                    <video src="" playsinline="" loop="loop" autoplay="autoplay"></video>
+                </a>
+            </div>
+            <div class="craft">
+                <a href="">
+                    <video src="" playsinline="" loop="loop" autoplay="autoplay"></video>
+                </a>
+            </div>
+            <div class="seat">
+                <a href="">
+                    <video src="" playsinline="" loop="loop" autoplay="autoplay"></video>
+                </a>
+            </div>
+        </div>
+        <div class="moon"></div>
+    </section>
 
 
-    
-    <script src="/Jquery/jquery-3.6.0.js"></script>
+
+
     <script src="/bootstrap-4.2.1-dist/bootstrap-4.2.1-dist/js/bootstrap.bundle.js"> </script>
     <script>
 
 
     </script>
 </body>
+
 </html>
