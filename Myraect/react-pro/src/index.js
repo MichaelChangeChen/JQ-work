@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'; //react-dom虛擬轉真實
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -7,9 +7,10 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   // React.StrictMode檢查工具
   <React.StrictMode>
-    <App />
+    <App /> 
+    {/* App是一個元件,透過render渲染到root上 */}
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root') //render讚root上
 );
 
 // If you want to start measuring performance in your app, pass a function
