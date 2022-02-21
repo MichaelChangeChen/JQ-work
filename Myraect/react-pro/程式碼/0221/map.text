@@ -1,0 +1,14 @@
+只要是有map迴圈,就一定要下key值,盡量避免使用index黨做key值.
+
+return (
+    <>
+      <ul>
+        {data.map((value, index) => {
+          return <li key={index}>{value.name}</li>
+        })}
+      </ul>
+    </>
+  )
+
+key值得使用:
+id > uuid > Date > index
