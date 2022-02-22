@@ -1,22 +1,28 @@
-import './menu.css'
+import './App.css'
+import OrderList from './components/OrderList'
+import Summary from './components/Summary'
+import { useState } from 'react'
+
+const products = [
+  {
+    id: 1,
+    name: '咖啡色 T-shirt',
+    categroy: 'Shirt',
+    image: 'https://i.imgur.com/1GrakTl.jpg',
+    price: 300,
+  },
+]
 
 function App() {
-  const [act, setAct] = useState({class:'active'})
-  const ActSty = ()=>{}
+  const [count, setCount] = useState(1)
+
   return (
-    <>
-      <ul>
-        <li>
-          <a onClick={ActSty}>首頁</a>
-        </li>
-        <li>
-          <a>關於我們</a>
-        </li>
-        <li>
-          <a>產品</a>
-        </li>
-      </ul>
-    </>
+    <div className="card">
+      <div className="row">
+        <OrderList products={products} count={count} setCount={setCount} />
+        <Summary totalNumber={count} totalPrice={count * products[0].price} />
+      </div>
+    </div>
   )
 }
 
