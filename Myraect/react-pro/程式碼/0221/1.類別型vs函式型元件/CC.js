@@ -1,8 +1,13 @@
 import { Component } from 'react'
+//原形  import React from 'react'
+// class CC extends React.Component{}
+
 
 class CC extends Component {
+  //建構式
   constructor() {
     super()
+    //super()  是呼叫父母類別(Component)建構式
     this.state = { total: 0 }
   }
 
