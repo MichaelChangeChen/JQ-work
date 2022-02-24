@@ -2,7 +2,6 @@ import React from 'react'
 import ProductItem from './ProductItem'
 //這是(父層),要吃到./ProductItem的檔案,並把資料丟到./ProductItem裡
 
-
 function OrderList(props) {
   const { products, count, setCount } = props
 
