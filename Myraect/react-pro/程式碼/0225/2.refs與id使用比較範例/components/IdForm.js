@@ -18,6 +18,13 @@ function IdForm(props) {
       >
         Click me(blur)
       </button>
+      <button
+        onClick={() => {
+        console.log(document.getElementById('my-input').value)
+        }}
+      >
+        Click me(getValue)
+      </button>
     </>
   )
 }

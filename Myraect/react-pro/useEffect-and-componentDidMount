@@ -1,0 +1,53 @@
+/* 
+函式型元件的return同等於類別型元件的render()
+類別型:
+componentDidMount 
+componentDidUpdate
+componentWillUnmount
+
+同等於函式型: useEffect
+
+鉤子不能寫在if及for裡面
+函示型寫法如下:
+*/
+import React,{useState,useEffect} from 'react'
+function App(){
+    const [total,setTotal]= uesState
+
+//以下為三種狀態:
+
+//模擬類別型的componentDidMount
+useEffect(()=>{},[])
+
+
+//模擬類別型的componentDidUpdat(DidUpdat + DidMount)
+useEffect(()=>{
+        //code write here
+},[total])
+
+
+//模擬類別型的componentWllUnmount
+useEffect(()=>{
+    return ()=>{
+        //code write here
+    }
+},[])
+
+return<></>
+}
+export default App
+
+
+/*類別型寫法如下:*/
+
+componentDidMount() {
+    console.log('componentDidMount')
+}
+
+componentDidUpdate() {
+    console.log('componentDidUpdate')
+}
+
+componentWillUnmount() {
+     console.log('componentWillUnmount')
+}

@@ -13,12 +13,21 @@ function RefsForm(props) {
       >
         Click me(focus)
       </button>
+
       <button
         onClick={() => {
           inputEl.current.blur()
         }}
       >
         Click me(blur)
+      </button>
+      
+      <button
+        onClick={() => {
+        console.log(inputEl.current.value)
+        }}
+      >
+        Click me(getValue)
       </button>
     </>
   )
