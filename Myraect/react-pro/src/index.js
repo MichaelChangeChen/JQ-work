@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; //react-dom虛擬轉真實
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

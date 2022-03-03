@@ -1,9 +1,32 @@
 import React from 'react'
 import ProductItem from './ProductItem'
-//這是(父層),要吃到./ProductItem的檔案,並把資料丟到./ProductItem裡
 
 function OrderList(props) {
-  const { products, count, setCount } = props
+  const { productsInOrder, setProductsInOrder } = props
+
+  const setCount = (newCount, i) => {
+    //1. 先從原本的陣列(物件)拷貝出一個新陣列(物件)
+    const newProductsInOrder = [...productsInOrder]
+
+    //2. 在拷貝出的新陣列(物件)上運算或處理
+    // 更新陣列中對應的商品數量
+    newProductsInOrder[i].count = newCount < 1 ? 1 : newCount
+
+    //3. 設定回原本的狀態
+    setProductsInOrder(newProductsInOrder)
+  }
+
+  // 處理項目刪除用
+  const handleDelete = (id) => {
+    //1. 先從原本的陣列(物件)拷貝出一個新陣列(物件)
+    //2. 在拷貝出的新陣列(物件)上運算或處理
+    const newProductsInOrder = [...productsInOrder].filter((v, i) => {
+      return v.id !== id
+    })
+
+    //3. 設定回原本的狀態
+    setProductsInOrder(newProductsInOrder)
+  }
 
   return (
     <>
@@ -20,19 +43,21 @@ function OrderList(props) {
             </div>
           </div>
         </div>
-        {products.map((product, i) => {
-          const { id, name, categroy, image, price } = product
-
+        {productsInOrder.map((v, i) => {
           return (
             <ProductItem
-              key={id}
-              id={id}
-              name={name}
-              categroy={categroy}
-              price={price}
-              image={image}
-              count={count}
-              setCount={setCount}
+              key={v.id}
+              name={v.name}
+              category={v.category}
+              image={v.image}
+              price={v.price}
+              count={v.count}
+              handleDelete={() => {
+                handleDelete(v.id)
+              }}
+              setCount={(newCount) => {
+                setCount(newCount, i)
+              }}
             />
           )
         })}

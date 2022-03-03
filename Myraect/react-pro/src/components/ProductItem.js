@@ -1,14 +1,16 @@
-function ProductItem(props) {
-  // 每個商品物件
-  //    {
-  //        id:1,
-  //        name: '咖啡色 T-shirt',
-  //        categroy:'Shirt',
-  //        image:'https://i.imgur.com/1GrakTl.jpg',
-  //        price:300
-  //    }
+import React from 'react'
 
-  const { id, name, categroy, image, price, count, setCount } = props
+// 每個商品的物件
+// {
+//   id: 1,
+//   name: '咖啡色 T-shirt',
+//   category: 'Shirt',
+//   image: 'https://i.imgur.com/1GrakTl.jpg',
+//   price: 300
+// }
+
+function ProductItem(props) {
+  const { name, category, image, price, count, setCount, handleDelete } = props
 
   return (
     <>
@@ -18,14 +20,14 @@ function ProductItem(props) {
             <img alt="" className="img-fluid" src={image} />
           </div>
           <div className="col">
-            <div className="row text-muted">{categroy}</div>
+            <div className="row text-muted">{category}</div>
             <div className="row">{name}</div>
           </div>
           <div className="col">
             <a
               href="#/"
               onClick={() => {
-                if (count - 1 >= 1) setCount(count - 1)
+                setCount(count - 1)
               }}
             >
               -
@@ -43,7 +45,10 @@ function ProductItem(props) {
             </a>
           </div>
           <div className="col">
-            ${price} <span className="close">&#10005;</span>
+            ${price}{' '}
+            <span className="close" onClick={handleDelete}>
+              &#10005;
+            </span>
           </div>
         </div>
       </div>
