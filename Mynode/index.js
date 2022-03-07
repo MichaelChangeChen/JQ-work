@@ -28,8 +28,8 @@ const cors = require('cors');
 const fetch = require('node-fetch');
 const { default: axios } = require('axios');
 
-
-
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // 2. 建立web server 物件
 const app = express();
@@ -38,7 +38,7 @@ const app = express();
 app.set('view engine', 'ejs');
 // -------註冊樣版引擎-------
 
-
+//船圖片一定要設定cors
 const corsOptions = {
     credentials: true,
     origin: function(origin, cb){
@@ -262,8 +262,50 @@ app.get('/yahoo', async (req, res)=>{
 
 });
 
-//axios
+//登入的表單
+app.get('/login',async (req,res)=>{
+    res.render('login')
+});
+// 檢查登入帳密
+app.post('/login',async (req,res)=>{
+    const output = {
+        success:false,
+        error:'',
+        info:null,
+        token:'',
+        code:0,
+    }
 
+    const [rs] = await db.query('SELECT * FROM admins WHERE account=?',[req.body.account]);
+
+    if(rs.length ===0){
+        output.error = '請輸入欄位';
+        output.code = 400;
+        return res.json(output);
+    }
+
+    if(! rs.length){
+        output.error = '帳密錯誤';
+        output.code = 401;
+        return res.json(output);
+    }
+    const row = rs[0];
+   const compareResult = await bcrypt.compare(req.body.password, row.password);
+    if(! compareResult){
+        output.error = '帳密錯誤';
+        output.code = 402;
+        return res.json(output);
+    }
+    
+    const {sid, account, avatar, nickname} = row;
+    output.success = true;
+    output.info = {account, avatar, nickname};
+    output.token = jwt.sign({sid, account}, process.env.JWT_KEY);
+    
+
+    res.json(output);
+
+});
 
 //---------------寫在所有的路由後面----------------------
 //只接受USE的方法

@@ -4,11 +4,36 @@ const express = require('express');
 const router = express.Router();
 
 
+//=====================REACT myform=============
+const upload = require('./../modules/upload-imgs');
+const db = require('./../modules/connect-db');
+const res = require('express/lib/response');
+//=====================REACT myform=============
+
+
 // 自訂的 middleware 了解next()的用法
 router.use((req, res, next)=>{
     res.locals.shin += 'test2';
     next();
 });
+//=====================REACT myform=============
+router.get('/myform/:sid',async (req,res)=>{
+  
+    const sid = parseInt(req.params.sid) || 0 ;
+    const [rs] = await db.query(`SELECT account,avatar,nickname FROM admins WHERE sid=${sid}`)
+    res.json(rs)
+})
+
+router.put('/myform/:sid',upload.single('avatar'),async (req,res)=>{
+    let modifyAvatar = '';
+    if(req.file && req.file.filename){
+        modifyAvatar = `,avatar='${req.file.filename}'`
+    }
+    const sql = `UPDATE admins SET nickname=? ${modifyAvatar} WHERE sid=?`
+    const result = await db.query(sql,[req.body.nickname,req.params.sid])
+    res.json(result)
+})
+//=====================REACT myform=============
 
 router.get('/', (req, res)=>{
     res.send('admin2: root');
