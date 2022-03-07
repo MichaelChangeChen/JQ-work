@@ -1,73 +1,61 @@
-import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Link, Router } from 'react-router-dom'
+import config from './Config'
 
-// 頁面元件
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import NotFoundPage from './pages/NotFoundPage'
-import ProductDetail from './pages/ProductDetail'
-import ProductDetailQS from './pages/ProductDetailQS'
-import ProductList from './pages/ProductList'
-import ProductListQS from './pages/ProductListQS'
-import OrderIndex from './pages/Order/OrderIndex'
-import OrderSteps from './pages/Order2/OrderSteps'
+function MyForm() {
+  useEffect(()=>{
 
-// 其它元件(選單、頁首、頁尾...etc)
-import Menu from './components/Menu'
-import MLBreadcrumb from './components/MLBreadcrumb'
-
-function App() {
-  // 全域狀態
-  const [auth, setAuth] = useState(false)
+  },[])
 
   return (
-    <Router>
-      <>
-        {/* 選單 */}
-        <Menu />
-        <MLBreadcrumb />
-        {/* 路由表 */}
-        <Switch>
-          <Route path="/order">
-            <OrderIndex />
-          </Route>
-          <Route path="/order-steps/:stepType">
-            <OrderSteps />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/about/contact">
-            <Contact />
-          </Route>
-          <Route path="/product-list-qs">
-            <ProductListQS />
-          </Route>
-          <Route path="/product-detail-qs">
-            <ProductDetailQS />
-          </Route>
-          <Route path="/product-list">
-            <ProductList />
-          </Route>
-          {/* 網址上的動態參數params */}
-          <Route path="/product-list/product-detail/:id">
-            <ProductDetail />
-          </Route>
-          <Route path="/login">
-            <Login auth={auth} setAuth={setAuth} />
-          </Route>
-          <Route exact path="/">
-            <Home auth={auth} />
-          </Route>
-          <Route path="*">
-            <NotFoundPage />
-          </Route>
-        </Switch>
-      </>
-    </Router>
+    <div className="App">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6">
+            <form>
+              <div className="mb-3">
+                <label for="exampleInputEmail1" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" className="form-text">
+                  We'll never share your email with anyone else.
+                </div>
+              </div>
+              <div className="mb-3">
+                <label for="exampleInputPassword1" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <div className="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label className="form-check-label" for="exampleCheck1">
+                  Check me out
+                </label>
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export default App
+export default MyForm
