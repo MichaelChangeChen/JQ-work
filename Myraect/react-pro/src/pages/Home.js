@@ -1,16 +1,16 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 function Home(props) {
-  console.log(props)
-
   const { auth } = props
   return (
     <>
-      <h1>首頁</h1>
+      <h1>Home</h1>
       {auth ? '已登入' : '未登入'}
     </>
   )
 }
+
+Home.propTypes = {}
 
 export default Home

@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function ProductList(props) {
-  return (
-    <div>ProductList</div>
-  )
+function Product(props) {
+  return <div>Product</div>
 }
 
-export default ProductList
+Product.propTypes = {}
+
+export default Product
